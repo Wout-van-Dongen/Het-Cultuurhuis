@@ -1,0 +1,105 @@
+@import 'reset.css';
+
+body {
+	background: #cccccc;
+}
+
+div#wrapper {
+	display: block;
+	width: 790px;
+	margin-left: auto;
+	margin-right: auto;
+	background: #ffffff;
+	border: 5px double #cccccc;
+}
+
+/*==Header ====================*/
+header {
+	clear: both;
+}
+
+header figure img {
+	float: left;
+}
+
+header h1 {
+	font-size: 30pt;
+	margin-left: 30px;
+	color: #000055;
+	font-weight: bolder;
+	text-shadow: 3px 3px 2px #ddddff;
+	float: left;
+}
+
+/*==Genre Menu ====================*/
+nav {
+	clear: both;
+}
+
+nav#Genres ul,nav#genre_menu ul li,nav#genre_menu h2 {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+nav#Genres h2 {
+	font-size: 20pt;
+	padding: 5px;
+	background: #ccccff;
+	border: 0px solid #ccccff;
+	border-bottom-right-radius: 10px;
+	border-top-left-radius: 10px;
+	float: left;
+}
+
+nav#Genres ul li {
+	float: left;
+}
+
+nav#Genres ul li a {
+	display: block;
+	color: #000055;
+	padding: 5px;
+	background: #ccccff;
+	border: 2px solid #ccccff;
+	border-left-style: groove;
+}
+
+nav#Genres ul li a:hover {
+	background: #eeeeee;
+	border-color: #eeeeee;
+}
+
+/*==Voorstellingen ======================*/
+section#voorstelling_tabel {
+	clear: both;
+}
+
+section#voorstelling_tabel table {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 90%;
+}
+
+section#voorstelling_tabel table td {
+	border: 1px solid #ccccff;
+	padding: 2px;
+	text-align: center;
+}
+
+section#voorstelling_tabel table th {
+	text-align: center;
+	font-weight: bolder;
+	padding: 2px;
+	background: #aaaacc;
+}
+
+section#voorstelling_table table tr:nth-child(even) td {
+	background: #ffffff;
+}
+
+section#voorstelling_tabel table tr:nth-child(odd) td {
+	background: #ccccff;
+}
