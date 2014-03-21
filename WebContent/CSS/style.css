@@ -70,10 +70,12 @@ nav#Genres ul li a:hover {
 	border-color: #eeeeee;
 }
 
-/*==Voorstellingen ======================*/
-section#voorstelling_tabel {
+
+section{
 	clear: both;
 }
+
+/*==Voorstellingen ======================*/
 
 section#voorstelling_tabel table {
 	margin-left: auto;

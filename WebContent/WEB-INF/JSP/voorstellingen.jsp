@@ -7,19 +7,16 @@
 <core:set value="${pageContext.servletContext.contextPath}"
 	var="contextURL" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Cultuurhuis</title>
 <link rel="stylesheet" type="text/css"
 	href="${contextURL}/CSS/style.css" />
 </head>
 <body>
 	<div id="wrapper">
-		<header> <figure> <img
-			src="${contextURL}/IMG/voorstellingen.png"
-			alt="Het Cultuurhuis voorstellingenlogo: Twee Toneelmaskers"
-			title="Voorstellingen" /> </figure>
-		<h1>Het Cultuurhuis: voorstellingen</h1>
-		</header>
+		<core:import url="header.jsp" />
 		<core:import url="/getGenres" />
+		<%-- imports the menu --%>
+		<section id="voorstellingen"> </section>
 	</div>
 </body>
 </html>
