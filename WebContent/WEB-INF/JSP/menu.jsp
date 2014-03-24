@@ -5,7 +5,7 @@
 <h2>${menuName}</h2>
 	<ul>
 		<core:forEach var="entry" items="${menuList}">
-			<li><a href=""><core:out value="${entry.value}"/></a></li>
+			<li><a href="getVoorstellingen?vID=${entry.key}"><core:out value="${entry.value}"/></a></li>
 		</core:forEach>
 	</ul>
 </nav>

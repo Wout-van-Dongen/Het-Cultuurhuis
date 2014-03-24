@@ -1,12 +1,17 @@
 @import 'reset.css';
 
+@font-face {
+	font-family: Cultural;
+	src: url(../FONT/Night_Club_70s_Bold.ttf);
+}
+
 body {
 	background: #cccccc;
 }
 
 div#wrapper {
 	display: block;
-	width: 790px;
+	width: 970px;
 	margin-left: auto;
 	margin-right: auto;
 	background: #ffffff;
@@ -22,13 +27,24 @@ header figure img {
 	float: left;
 }
 
-header h1 {
-	font-size: 30pt;
-	margin-left: 30px;
-	color: #000055;
+header h1, header h2 {
+	font-family: Cultural;
+		color: #000033;
 	font-weight: bolder;
-	text-shadow: 3px 3px 2px #ddddff;
-	float: left;
+	text-shadow: 3px 3px 2px #ccccff;
+	float:left;
+	
+	font-size: 30pt;
+}
+
+header h1{
+
+	float:left;
+	font-size: 30pt;
+}
+header h2 {
+	margin:10px;
+	font-size: 20pt;
 }
 
 /*==Genre Menu ====================*/
@@ -44,6 +60,7 @@ nav#Genres ul,nav#genre_menu ul li,nav#genre_menu h2 {
 
 nav#Genres h2 {
 	font-size: 20pt;
+	font-family:Cultural, Arial;
 	padding: 5px;
 	background: #ccccff;
 	border: 0px solid #ccccff;
@@ -63,6 +80,8 @@ nav#Genres ul li a {
 	background: #ccccff;
 	border: 2px solid #ccccff;
 	border-left-style: groove;
+	font-family: Arial;
+	font-size: 10pt;
 }
 
 nav#Genres ul li a:hover {
@@ -70,38 +89,47 @@ nav#Genres ul li a:hover {
 	border-color: #eeeeee;
 }
 
-
-section{
+section {
 	clear: both;
 }
 
 /*==Voorstellingen ======================*/
-
-section#voorstelling_tabel table {
+section table#voorstelling_tabel {
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 10px;
+	margin-top: 50px;
 	margin-bottom: 10px;
-	width: 90%;
+	width: 900px;
 }
 
-section#voorstelling_tabel table td {
+section table#voorstelling_tabel td {
 	border: 1px solid #ccccff;
 	padding: 2px;
 	text-align: center;
 }
 
-section#voorstelling_tabel table th {
+section table#voorstelling_tabel th {
 	text-align: center;
 	font-weight: bolder;
 	padding: 2px;
 	background: #aaaacc;
 }
 
-section#voorstelling_table table tr:nth-child(even) td {
+section table#voorstelling_tabel tr:nth-child(even) td {
 	background: #ffffff;
+
 }
 
-section#voorstelling_tabel table tr:nth-child(odd) td {
+section table#voorstelling_tabel tr:nth-child(odd) td {
 	background: #ccccff;
 }
+
+
+
+
+
+/*Colors*/
+
+.red{
+	color:#FF0000;
+	}

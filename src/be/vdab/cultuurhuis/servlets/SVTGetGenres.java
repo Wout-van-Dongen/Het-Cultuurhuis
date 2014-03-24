@@ -13,12 +13,11 @@ import sun.rmi.server.Dispatcher;
 import be.vdab.cultuurhuis.data.DAOException;
 import be.vdab.cultuurhuis.data.DAOGenres;
 
-@WebServlet("/GetGenres")
-public class GetGenres extends HttpServlet {
+public class SVTGetGenres extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VIEW="/WEB-INF/JSP/menu.jsp";
 
-	public GetGenres() {
+	public SVTGetGenres() {
 
 	}
 

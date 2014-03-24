@@ -16,7 +16,36 @@
 		<core:import url="header.jsp" />
 		<core:import url="/getGenres" />
 		<%-- imports the menu --%>
-		<section id="voorstellingen"> </section>
+		<section id="voorstellingen"> <core:if
+			test="${not empty voorstellingList}">
+			<table id="voorstelling_tabel">
+				<tr>
+					<th>Datum</th>
+					<th>Titel</th>
+					<th>Uitvoerders</th>
+					<th>Prijs</th>
+					<th>Vrije Plaatsen</th>
+					<th></th>
+				</tr>
+				<core:forEach var="vs" items="${voorstellingList}">
+					<tr>
+						<td>${vs.datum}</td>
+						<td>${vs.title}</td>
+						<td>${vs.uitvoerders}</td>
+						<td>${vs.prijs}</td>
+						<td>${vs.vrijePlaatsen}</td>
+						<td><core:choose>
+								<core:when test="${vs.vrijePlaatsen > 0}">
+									<a href='reserveer?id=${vs.voorstellingsNr}'>Reserveer</a>
+								</core:when>
+								<core:otherwise>
+									<strong class="red">Volzet!</strong>
+								</core:otherwise>
+							</core:choose></td>
+					</tr>
+				</core:forEach>
+			</table>
+		</core:if> </section>
 	</div>
 </body>
 </html>

@@ -9,5 +9,16 @@
 			alt="Het Cultuurhuis voorstellingenlogo: Twee Toneelmaskers"
 			title="Voorstellingen" />
 	</figure>
-	<h1>Het Cultuurhuis: voorstellingen</h1>
+	<h1>
+		Het Cultuurhuis:
+		</h1><h2>
+		<core:choose>
+			<core:when test="${subtitle != null}">
+				<core:out value="${subtitle}" />
+			</core:when>
+			<core:otherwise>
+				<core:out value="Voorstellingen" />
+			</core:otherwise>
+		</core:choose>
+	</h2>
 </header>

@@ -1,6 +1,7 @@
 package be.vdab.cultuurhuis.data;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,9 +10,10 @@ import java.util.Map;
 
 public class DAOGenres extends DataAccesObject{
 
-	private final String QUERY ="SELECT GenreNr, Naam FROM genres";
+
 
 	public Map<Long,String> getGenreList() throws DAOException{
+		String QUERY ="SELECT GenreNr, Naam FROM genres";
 		ResultSet rs = null;
 		Connection connection = null;
 		Statement statement = null;
@@ -23,8 +25,28 @@ public class DAOGenres extends DataAccesObject{
 		}catch(SQLException sqlExc){
 			throw new DAOException("Kan genres niet lezen uit database", sqlExc);
 		}
+	}
 
-
+	public String getGenre(int vID) throws DAOException{
+		String QUERY ="SELECT Naam FROM genres WHERE genrenr = ?";
+		ResultSet rs = null;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		try{
+			connection = getConnection();
+			statement = connection.prepareStatement(QUERY);
+			statement.setInt(1, vID);
+			rs = statement.executeQuery();
+			if(rs.next()){
+			System.out.println(rs.getString(1));
+			return rs.getString(1);
+			}else{
+				return null;
+			}
+						
+		}catch(SQLException sqlExc){
+			throw new DAOException("Kan genre niet lezen uit database", sqlExc);
+		}
 
 	}
 
@@ -35,6 +57,7 @@ public class DAOGenres extends DataAccesObject{
 		}
 		return map;	
 	}
+
 
 
 }
