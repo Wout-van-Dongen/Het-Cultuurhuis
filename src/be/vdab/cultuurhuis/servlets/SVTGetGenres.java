@@ -15,7 +15,7 @@ import be.vdab.cultuurhuis.data.DAOGenres;
 
 public class SVTGetGenres extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String VIEW="/JSP/menu.jsp";
+	private static final String VIEW="/JSP/genreMenu.jsp";
 
 	public SVTGetGenres() {
 
@@ -25,7 +25,6 @@ public class SVTGetGenres extends HttpServlet {
 		DAOGenres genreDAO = new DAOGenres();
 		try {
 			request.setAttribute("menuList", genreDAO.getGenreList());
-			request.setAttribute("menuName", "Genres");
 		} catch (DAOException e) {
 			request.setAttribute("fout", "De lijst met genres kan niet worden opgehaald!");
 		}
