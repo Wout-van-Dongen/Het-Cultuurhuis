@@ -18,7 +18,7 @@ import be.vdab.cultuurhuis.entities.Voorstelling;
 
 
 public class SVTGetVoorstellingen extends HttpServlet {
-	private static final String VIEW="/WEB-INF/JSP/voorstellingen.jsp";
+	private static final String VIEW="/JSP/voorstellingen.jsp";
 	private static final long serialVersionUID = 1L;
 
 	public SVTGetVoorstellingen() {
@@ -27,9 +27,10 @@ public class SVTGetVoorstellingen extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAOVoorstellingen voorstellingDAO = new DAOVoorstellingen();
+		request.setCharacterEncoding("UTF-8");
 		int id;
 		try{
-			id = Integer.parseInt(request.getParameter("vID"));
+			id = Integer.parseInt(request.getParameter("gID"));
 			ArrayList<Voorstelling> voorstellingen = voorstellingDAO.getVoorstellingList(id);
 			if(voorstellingen.size() > 0){
 				request.setAttribute("voorstellingList", voorstellingen);
@@ -43,9 +44,10 @@ public class SVTGetVoorstellingen extends HttpServlet {
 			System.out.println(daoExc.getMessage());
 			request.setAttribute("fout", daoExc.getMessage());
 		}catch(NumberFormatException numExc){
-			//Given invalid characters in ID
-			System.out.println("Invalid vID");
+			request.setAttribute("fout", "The requested genre does not seem to exists.");
+			System.out.println("Invalid gID");
 		}
+		request.setAttribute("logo", "voorstellingen.png");
 		RequestDispatcher dispatcher = request.getRequestDispatcher(VIEW);
 		dispatcher.forward(request, response);
 	}

@@ -15,7 +15,7 @@ import be.vdab.cultuurhuis.data.DAOGenres;
 
 public class SVTGetGenres extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String VIEW="/WEB-INF/JSP/menu.jsp";
+	private static final String VIEW="/JSP/menu.jsp";
 
 	public SVTGetGenres() {
 

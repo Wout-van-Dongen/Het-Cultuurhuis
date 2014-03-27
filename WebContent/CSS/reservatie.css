@@ -1,0 +1,24 @@
+section#reservatie ul#vsReservatieInfo li {
+	padding: 10px;
+}
+
+section#reservatie ul#vsReservatieInfo li span.info {
+	margin: 5px;
+	font-weight: bolder;
+	display: block;
+}
+
+
+section#reservatie ul#vsReservatieInfo li input{
+	margin: 5px;
+	display: block;
+	}
+
+section#reservatie ul#vsReservatieInfo li input[type=text] {
+	width: 50px;
+}
+
+section#reservatie nav a.button{
+	display:block;
+	width:140px;
+}

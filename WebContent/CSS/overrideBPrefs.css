@@ -1,0 +1,6 @@
+/*Additional overwriting browser/user specified preferences*/
+* {
+	font-size: 10pt;
+	font-family: Arial;
+	color:#000000;
+}
