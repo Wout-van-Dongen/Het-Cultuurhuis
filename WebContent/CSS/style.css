@@ -1,37 +1,25 @@
-@import 'reset.css';
+nav#Genres h2 {
+	border-style: solid;
+	border-width: 0px;
+}
 
-@import 'overrideBPrefs.css';
-
-body {
-	background: #cccccc;
+nav#Genres ul li a {
+	border-width: 2px;
+	border-style: solid;
+	border-left-style: groove;
 }
 
 div#wrapper {
-	display: block;
-	width: 970px;
-	margin-left: auto;
-	margin-right: auto;
-	background: #ffffff;
-	border: 5px double #cccccc;
-}
-
-/*== Content ====================*/
-section {
-	clear: both;
-}
-
-section h2 {
-	margin: 20px;
-	margin-top: 50px;
-	font-size: 20pt;
-	font-family: Cultural, "Times new Roman"
+	border-width: 5px;
+	border-style: double;
 }
 
 a.button {
-	text-align: center;
-	v-align: middle; padding : 3px;
-	background: #ddddff;
-	border: 2px groove #ddddff;
-	border-radius:3px;
-	padding: 3px;
+	border-width: 2px;
+	border-style: groove;
+}
+
+section table#voorstelling_tabel td {
+	border-width: 1px;
+	border-style: solid;
 }

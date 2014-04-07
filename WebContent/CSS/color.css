@@ -1,3 +1,54 @@
+body {
+	background: #cccccc;
+}
+
+header h1,header h2 {
+	color: #000033;
+	text-shadow-color: #ccccff;
+}
+
+nav#Genres h2 {
+	background: #ccccff;
+	border-color: #ccccff;
+}
+
+nav#Genres ul li a:hover {
+	background: #eeeeee;
+	border-color: #eeeeee;
+}
+
+nav#Genres ul li a {
+	color: #000055;
+	background: #ccccff;
+	border-color:#ccccff;
+}
+
 .red {
 	color: #FF0000;
+}
+
+div#wrapper {
+	background: #ffffff;
+	border-color:#cccccc;
+}
+
+a.button {
+	background: #ddddff;
+	border-color:#ddddff;
+}
+
+section table#voorstelling_tabel tr:nth-child(even) td {
+	background: #ddddff;
+}
+
+section table#voorstelling_tabel tr:nth-child(odd) td {
+	background: #ccccff;
+}
+
+section table#voorstelling_tabel th {
+	background: #aaaacc;
+}
+
+section table#voorstelling_tabel td {
+	border-color:#ccccff;
 }

@@ -1,0 +1,58 @@
+@font-face {
+	font-family: Cultural;
+	src: url(../FONT/Night_Club_70s_Bold.ttf);
+}
+
+/*==General==============================*/
+/*=======================================*/
+
+/*=======================================*/
+/*==Header===============================*/
+/*=======================================*/
+header h1,header h2 {
+	font-family: Cultural;
+	font-weight: bolder;
+	text-shadow: 3px 3px 2px;
+}
+header h1 {
+	font-size: 30pt;
+}
+header h2 {
+	font-size: 20pt;
+}
+/*=======================================*/
+/*==Main Menu============================*/
+/*=======================================*/
+nav#Genres h2 {
+	font-size: 20pt;
+	font-family: Cultural, Arial;
+}
+nav#Genres ul li a {
+	font-family: Arial;
+	font-size: 10pt;
+}
+/*=======================================*/
+section h2 {
+	font-size: 20pt;
+	font-family: Cultural, "Times new Roman"
+}
+
+section#reservatie ul#vsReservatieInfo li span.info {
+	font-weight: bolder;
+}
+
+section table#voorstelling_tabel th {
+	font-weight: bolder;
+	text-align: center;
+	font-size: 10pt;
+}
+
+section table#voorstelling_tabel td {
+	font-size: 10pt;
+	text-align: center;
+}
+
+a.button {
+	text-align: center;
+	v-align: middle;
+}

@@ -1,0 +1,86 @@
+/*Clear float*/
+header,nav,section {
+	clear: both;
+}
+
+/*Float Left*/
+header figure img,header h1,header h2,nav#Genres h2,nav#Genres ul li {
+	float: left;
+}
+
+/*Display Block*/
+div#wrapper,nav#Genres ul,nav#genre_menu ul li,nav#genre_menu h2,nav#Genres ul li a,section#reservatie ul#vsReservatieInfo li span.info,section#reservatie ul#vsReservatieInfo li input,section#reservatie nav a.button
+	{
+	display: block;
+}
+
+/*Margins*/
+div#wrapper {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+header h2 {
+	margin: 10px;
+}
+
+section h2 {
+	margin: 20px;
+	margin-top: 50px;
+}
+
+section#reservatie ul#vsReservatieInfo li span.info {
+	margin: 5px;
+}
+
+section#reservatie ul#vsReservatieInfo li input {
+	margin: 5px;
+}
+
+section table#voorstelling_tabel {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+
+/*Paddings*/
+nav#Genres h2 {
+	padding: 5px;
+}
+
+nav#Genres ul li a {
+	padding: 5px;
+}
+
+a.button {
+	padding: 3px;
+}
+
+section#reservatie ul#vsReservatieInfo li {
+	padding: 10px;
+}
+
+section table#voorstelling_tabel th {
+	padding: 2px;
+}
+
+section table#voorstelling_tabel td {
+	padding: 2px;
+}
+
+/*Widths*/
+div#wrapper {
+	width: 970px;
+}
+
+section#reservatie nav a.button {
+	width: 140px;
+}
+
+section#reservatie ul#vsReservatieInfo li input[type=text] {
+	width: 50px;
+}
+
+section table#voorstelling_tabel {
+	width: 900px;
+}
