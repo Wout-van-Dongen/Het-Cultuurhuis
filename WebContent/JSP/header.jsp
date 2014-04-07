@@ -2,7 +2,7 @@
 <core:set value="${pageContext.servletContext.contextPath}"
 	var="contextURL" />
 
-<header>
+<header id="voostelling_header">
 	<figure>
 		<img src="${contextURL}/IMG/${logo}.png"
 			alt="${logoAlt}"

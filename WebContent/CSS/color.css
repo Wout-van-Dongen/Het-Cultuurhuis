@@ -7,20 +7,41 @@ header h1,header h2 {
 	text-shadow-color: #ccccff;
 }
 
-nav#Genres h2 {
+nav.genres h2 {
 	background: #ccccff;
 	border-color: #ccccff;
 }
 
-nav#Genres ul li a:hover {
+nav.reservaties h2 {
+	background: #EAAE24;
+	border-color: #EAAE24;
+}
+
+nav.genres ul li a {
+	color: #000055;
+	background: #ccccff;
+	border-color:#ccccff;
+}
+nav.reservaties ul li a {
+	color: #553300;
+	background: #EAAE24;
+	border-color:#EAAE24;
+}
+nav.reservaties ul li a:hover {
+	background: #eeeeee;
+	border-color:#eeeeee;
+}
+
+nav.genres ul li a:hover {
 	background: #eeeeee;
 	border-color: #eeeeee;
 }
 
-nav#Genres ul li a {
-	color: #000055;
-	background: #ccccff;
-	border-color:#ccccff;
+nav.genres{
+background: #ccccff;
+}
+nav.reservaties{
+background: #EAAE24;
 }
 
 .red {

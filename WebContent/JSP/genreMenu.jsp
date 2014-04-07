@@ -1,5 +1,5 @@
 <%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
-<nav id="Genres">
+<nav id="main_menu" class="genres">
 	<h2>Genres</h2>
 	<ul>
 		<core:forEach var="entry" items="${menuList}">

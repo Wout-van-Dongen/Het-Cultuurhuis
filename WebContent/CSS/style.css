@@ -3,7 +3,7 @@ nav#Genres h2 {
 	border-width: 0px;
 }
 
-nav#Genres ul li a {
+nav#main_menu ul li a {
 	border-width: 2px;
 	border-style: solid;
 	border-left-style: groove;

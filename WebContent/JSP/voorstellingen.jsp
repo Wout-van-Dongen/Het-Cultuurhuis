@@ -1,22 +1,23 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
-<core:set value="${pageContext.servletContext.contextPath}" var="contextURL"/>
+<core:set value="${pageContext.servletContext.contextPath}"
+	var="contextURL" />
 <!DOCTYPE html>
 <html>
 <head>
 <core:import url="head.jsp" />
-<link rel="stylesheet" type="text/css" href="${contextURL}/CSS/voorstellingen.css"/>
-<link rel="stylesheet" type="text/css" href="${contextURL}/CSS/menu.css"/>
+<link rel="stylesheet" type="text/css"
+	href="${contextURL}/CSS/styles.css" />
 </head>
 <body>
 	<div id="wrapper">
-<core:set var="logo" scope="request" value="voorstellingen"/>
-
-		<core:import url="header.jsp"/>
+	<core:set var="logo" scope="request" value="voorstellingen" />
+		<core:import url="header.jsp" />
 		<core:import url="/getGenres" />
 		<%-- imports the menu --%>
 		<section id="voorstellingen">
 			<core:if test="${not empty voorstellingList}">
+				<%-- Begin Tabel met Voorstellingen --%>
 				<h2>${subtitle}voorstellingen</h2>
 				<table id="voorstelling_tabel">
 					<tr>
@@ -45,6 +46,7 @@
 						</tr>
 					</core:forEach>
 				</table>
+				<%-- Einde Tabel met Voorstellingen --%>
 			</core:if>
 		</section>
 	</div>

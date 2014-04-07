@@ -23,11 +23,11 @@ header h2 {
 /*=======================================*/
 /*==Main Menu============================*/
 /*=======================================*/
-nav#Genres h2 {
+nav#main_menu h2 {
 	font-size: 20pt;
 	font-family: Cultural, Arial;
 }
-nav#Genres ul li a {
+nav#main_menu ul li a {
 	font-family: Arial;
 	font-size: 10pt;
 }

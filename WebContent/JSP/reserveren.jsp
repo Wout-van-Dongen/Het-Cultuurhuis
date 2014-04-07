@@ -7,18 +7,20 @@
 <head>
 <core:import url="head.jsp" />
 <link rel="stylesheet" type="text/css"
-	href="${contextURL}/CSS/reservatie.css">
+	href="${contextURL}/CSS/styles.css">
 </head>
 <body>
 	<div id="wrapper">
 		<core:set var="logo" scope="request" value="reserveer" />
 		<core:import url="header.jsp" />
-		<section id="reservatie">
-
-			<nav>
-				<a class="button" href="../">Terug naar
-					voorstellingen</a>
+			<nav id="main_menu" class="reservaties">
+				<h2>Reserveren</h2>
+				<ul>
+					<li><a href="../">Terug naar voorstellingen</a></li>
+				</ul>
 			</nav>
+		<section id="reservatie">
+		
 			<form>
 				<ul id="vsReservatieInfo">
 					<li><label>Voorstelling:</label> <span class="info">${voorstelling.title}</span>
@@ -37,7 +39,6 @@
 						value="Reserveren" /></li>
 				</ul>
 			</form>
-
 		</section>
 	</div>
 </body>

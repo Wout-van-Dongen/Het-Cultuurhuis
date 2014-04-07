@@ -4,12 +4,13 @@ header,nav,section {
 }
 
 /*Float Left*/
-header figure img,header h1,header h2,nav#Genres h2,nav#Genres ul li {
+header figure img,header h1,header h2,nav#main_menu h2,nav#main_menu ul li
+	{
 	float: left;
 }
 
 /*Display Block*/
-div#wrapper,nav#Genres ul,nav#genre_menu ul li,nav#genre_menu h2,nav#Genres ul li a,section#reservatie ul#vsReservatieInfo li span.info,section#reservatie ul#vsReservatieInfo li input,section#reservatie nav a.button
+nav#main_menu ul li a,section#reservatie ul#vsReservatieInfo li span.info,section#reservatie ul#vsReservatieInfo li input,section#reservatie nav a.button
 	{
 	display: block;
 }
@@ -44,11 +45,11 @@ section table#voorstelling_tabel {
 }
 
 /*Paddings*/
-nav#Genres h2 {
+nav#main_menu h2 {
 	padding: 5px;
 }
 
-nav#Genres ul li a {
+nav#main_menu ul li a {
 	padding: 5px;
 }
 
@@ -83,4 +84,9 @@ section#reservatie ul#vsReservatieInfo li input[type=text] {
 
 section table#voorstelling_tabel {
 	width: 900px;
+}
+
+nav#main_menu {
+	width: 100%;
+	height: 27px;
 }
