@@ -13,32 +13,42 @@
 	<div id="wrapper">
 		<core:set var="logo" scope="request" value="reserveer" />
 		<core:import url="header.jsp" />
-			<nav id="main_menu" class="reservaties">
-				<h2>Reserveren</h2>
-				<ul>
-					<li><a href="../">Terug naar voorstellingen</a></li>
-				</ul>
-			</nav>
+		<nav id="main_menu" class="reservaties">
+			<h2>Reserveren</h2>
+			<ul>
+				<li><a href="../">Terug naar voorstellingen</a></li>
+			</ul>
+		</nav>
 		<section id="reservatie">
-		
-			<form>
-				<ul id="vsReservatieInfo">
-					<li><label>Voorstelling:</label> <span class="info">${voorstelling.title}</span>
-					</li>
-					<li><label>Uitvoerders:</label> <span class="info">${voorstelling.uitvoerders}</span>
-					</li>
-					<li><label>Datum:</label> <span class="info">${voorstelling.datum}</span>
-					</li>
-					<li><label>Prijs:</label> <span class="info"><core:out
-								value="€" />${voorstelling.prijs}</span></li>
-					<li><label>Vrije Plaatsen:</label> <span class="info">${voorstelling.vrijePlaatsen}</span></li>
-					<li><label>Plaatsen:</label> <input type="text" name="naam" />
-						<%--Insert Javescript to give warning if to-be-ordered number exceeds available seats --%>
-						<input type="hidden" name="vID"
-						value="${voorstelling.voorstellingsNr}" /> <input type="submit"
-						value="Reserveren" /></li>
-				</ul>
-			</form>
+			<core:choose>
+				<core:when test="${fouten != null}">
+					<h2>Not Found!</h2>
+					<p class="error_msg">${fouten}</p>
+				</core:when>
+				<core:otherwise>
+					<core:if test="${voorstelling != null}">
+					<h2>Reservatie</h2>
+						<form>
+							<ul id="vsReservatieInfo">
+								<li><label>Voorstelling:</label> <span class="info">${voorstelling.title}</span>
+								</li>
+								<li><label>Uitvoerders:</label> <span class="info">${voorstelling.uitvoerders}</span>
+								</li>
+								<li><label>Datum:</label> <span class="info">${voorstelling.datum}</span>
+								</li>
+								<li><label>Prijs:</label> <span class="info"><core:out
+											value="€" />${voorstelling.prijs}</span></li>
+								<li><label>Vrije Plaatsen:</label> <span class="info">${voorstelling.vrijePlaatsen}</span></li>
+								<li><label>Plaatsen:</label> <input type="text" name="naam" />
+									<%--Insert Javascript to give warning if to-be-ordered number exceeds available seats --%>
+									<input type="hidden" name="vID"
+									value="${voorstelling.voorstellingsNr}" /> <input
+									type="submit" value="Reserveren" /><label class="red">${foutmelding}</label></li>
+							</ul>
+						</form>
+					</core:if>
+				</core:otherwise>
+			</core:choose>
 		</section>
 	</div>
 </body>

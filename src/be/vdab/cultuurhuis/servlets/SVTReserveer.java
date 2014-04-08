@@ -4,12 +4,10 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import be.vdab.cultuurhuis.data.DAOException;
+import be.vdab.cultuurhuis.utils.DAOException;
 import be.vdab.cultuurhuis.data.DAOVoorstellingen;
 import be.vdab.cultuurhuis.entities.Voorstelling;
 
@@ -29,20 +27,23 @@ public class SVTReserveer extends HttpServlet {
 		try {
 			int id = Integer.parseInt(request.getParameter("vID"));
 			Voorstelling vs = voorstellingDAO.getVoorstelling(id);
-			request.setAttribute("voorstelling", vs);
-			request.setAttribute("subtitle", String.format("%s Reserveren", vs.getTitle()));
-			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-			dispatcher.forward(request, response);
+			if(vs !=null){
+				request.setAttribute("voorstelling", vs);
+				request.setAttribute("subtitle", String.format("%s Reserveren", vs.getTitle()));
+			}else{
+				request.setAttribute("fouten", "De gevraagde voorstelling kan niet worden gevonden.");
+			}
 		} catch (DAOException daoExc) {
-
+			request.setAttribute("fouten", daoExc.getMessage());
 		}catch(NumberFormatException numExc){
-
+			request.setAttribute("fouten", "De gevraagde voorstelling kan niet worden gevonden.");
 		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+		dispatcher.forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
-
 }

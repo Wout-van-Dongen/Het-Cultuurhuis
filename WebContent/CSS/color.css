@@ -4,7 +4,6 @@ body {
 
 header h1,header h2 {
 	color: #000033;
-	text-shadow-color: #ccccff;
 }
 
 nav.genres h2 {
@@ -72,4 +71,11 @@ section table#voorstelling_tabel th {
 
 section table#voorstelling_tabel td {
 	border-color:#ccccff;
+}
+
+
+
+
+.error_msg{
+	color:#330000;
 }

@@ -4,13 +4,10 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import sun.rmi.server.Dispatcher;
-import be.vdab.cultuurhuis.data.DAOException;
+import be.vdab.cultuurhuis.utils.DAOException;
 import be.vdab.cultuurhuis.data.DAOGenres;
 
 public class SVTGetGenres extends HttpServlet {

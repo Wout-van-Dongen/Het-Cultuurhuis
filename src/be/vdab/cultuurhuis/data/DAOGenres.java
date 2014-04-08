@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import be.vdab.cultuurhuis.utils.DAOException;
+
 public class DAOGenres extends DataAccesObject{
 
 

@@ -1,4 +1,4 @@
-package be.vdab.cultuurhuis.data;
+package be.vdab.cultuurhuis.utils;
 
 public class DAOException extends Exception {
 	private static final long serialVersionUID = 1L;

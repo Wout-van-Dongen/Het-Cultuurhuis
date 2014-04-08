@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import be.vdab.cultuurhuis.entities.Voorstelling;
+import be.vdab.cultuurhuis.utils.DAOException;
 
 public class DAOVoorstellingen extends DataAccesObject{
 

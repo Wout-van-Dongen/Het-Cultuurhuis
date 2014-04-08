@@ -1,4 +1,4 @@
-nav#Genres h2 {
+nav.genres h2, nav#main_menu {
 	border-style: solid;
 	border-width: 0px;
 }
