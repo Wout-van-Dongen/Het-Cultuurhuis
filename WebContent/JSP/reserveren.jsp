@@ -10,16 +10,16 @@
 	href="${contextURL}/CSS/styles.css">
 </head>
 <body>
-	<div id="wrapper">
+	<div id="wrapper" class="reservaties">
 		<core:set var="logo" scope="request" value="reserveer" />
 		<core:import url="header.jsp" />
-		<nav id="main_menu" class="reservaties">
+		<nav id="main_menu">
 			<h2>Reserveren</h2>
 			<ul>
 				<li><a href="../">Terug naar voorstellingen</a></li>
 			</ul>
 		</nav>
-		<section id="reservatie">
+		<section  id="content">
 			<core:choose>
 				<core:when test="${fouten != null}">
 					<h2>Not Found!</h2>

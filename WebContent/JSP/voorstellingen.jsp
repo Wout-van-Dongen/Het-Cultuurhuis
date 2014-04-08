@@ -10,12 +10,12 @@
 	href="${contextURL}/CSS/styles.css" />
 </head>
 <body>
-	<div id="wrapper">
+	<div id="wrapper" class="voorstellingen">
 		<core:set var="logo" scope="request" value="voorstellingen" />
 		<core:import url="header.jsp" />
 		<core:import url="/getGenres" />
 		<%-- imports the menu --%>
-		<section id="voorstellingen">
+		<section  id="content">
 			<core:choose>
 				<core:when test="${fouten != null}">
 				<h2>Not Found!</h2>

@@ -6,10 +6,3 @@ nav#main_menu h2, nav#main_menu{
 	border-bottom-right-radius: 10px;
 	border-top-left-radius: 10px;
 }
-
-a.button {
-	border-width: 2px;
-	border-style:groove;
-	border-radius: 3px;
-}
-	

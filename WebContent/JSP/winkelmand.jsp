@@ -10,9 +10,13 @@
 	href="${contextURL}/CSS/styles.css">
 </head>
 <body>
-	<div id="wrapper">
+	<div id="wrapper"  class="winkelmand">
 		<core:set var="logo" scope="request" value="winkelmand" />
 		<core:import url="header.jsp" />
+		<nav id="main_menu"></nav>
+		<section id="content">
+		
+		</section>
 </div>
 </body>
 </html>

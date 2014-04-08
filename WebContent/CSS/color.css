@@ -11,7 +11,7 @@ nav.genres h2 {
 	border-color: #ccccff;
 }
 
-nav.reservaties h2 {
+div#wrapper.reservaties nav#main_menu h2 {
 	background: #EAAE24;
 	border-color: #EAAE24;
 }
@@ -21,12 +21,12 @@ nav.genres ul li a {
 	background: #ccccff;
 	border-color:#ccccff;
 }
-nav.reservaties ul li a {
+div#wrapper.reservaties nav#main_menu ul li a {
 	color: #553300;
 	background: #EAAE24;
 	border-color:#EAAE24;
 }
-nav.reservaties ul li a:hover {
+div#wrapper.reservaties nav#main_menu ul li a:hover {
 	background: #eeeeee;
 	border-color:#eeeeee;
 }
@@ -39,7 +39,7 @@ nav.genres ul li a:hover {
 nav.genres{
 background: #ccccff;
 }
-nav.reservaties{
+div#wrapper.reservaties nav#main_menu{
 background: #EAAE24;
 }
 
@@ -52,24 +52,19 @@ div#wrapper {
 	border-color:#cccccc;
 }
 
-a.button {
-	background: #ddddff;
-	border-color:#ddddff;
-}
-
-section table#voorstelling_tabel tr:nth-child(even) td {
+table#voorstelling_tabel tr:nth-child(even) td {
 	background: #ddddff;
 }
 
-section table#voorstelling_tabel tr:nth-child(odd) td {
+table#voorstelling_tabel tr:nth-child(odd) td {
 	background: #ccccff;
 }
 
-section table#voorstelling_tabel th {
+table#voorstelling_tabel th {
 	background: #aaaacc;
 }
 
-section table#voorstelling_tabel td {
+table#voorstelling_tabel td {
 	border-color:#ccccff;
 }
 
