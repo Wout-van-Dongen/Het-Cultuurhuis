@@ -15,14 +15,23 @@ nav#main_menu ul li a,section#reservatie ul#vsReservatieInfo li span.info,sectio
 	display: block;
 }
 
+p {
+	margin: 20px;
+}
+
 /*==Wrapper==========================*/
 div#wrapper {
 	width: 970px;
 	margin-left: auto;
 	margin-right: auto;
+	position: relative;
 }
 
 /*==Header===========================*/
+header {
+	position: relative;
+}
+
 header h2 {
 	margin: 10px;
 }
@@ -41,12 +50,90 @@ nav#main_menu {
 	height: 27px;
 }
 
+/*==Secondary Menu========================*/
+nav#secondary_menu {
+	width: 370px;
+	float: left;
+	position: relative;
+	bottom: 22px;
+	left: 598px;
+}
+
+nav#secondary_menu ul {
+	width: 370px;
+	height: 20px;
+	position: relative;
+}
+
+nav#secondary_menu ul li {
+	display: block;
+	float: left;
+	max-width: 50%;
+	float: left;
+}
+
+nav#secondary_menu ul li a {
+	display: block;
+	width: 183px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+nav#secondary_menu {
+	width: 100%;
+	height: 0px;
+	position: relative;
+}
+
 /*==Content==========================*/
 
 /*General*/
 section h2 {
 	margin: 20px;
 	margin-top: 50px;
+}
+
+table.voorstelling_weergave {
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+
+table.voorstelling_weergave th {
+	padding: 2px;
+}
+
+table.voorstelling_weergave td {
+	padding: 2px;
+}
+
+table .date {
+	width: 50px;
+}
+
+table .time {
+	width: 50px;
+}
+
+table .title {
+	width: 375px;
+}
+
+table .executor {
+	width: 300px;
+}
+
+table .price {
+	width: 50px;
+}
+
+table .seats {
+	width: 50px;
+}
+
+table .interact {
+	width: 75px;
 }
 
 /*Reservaties*/
@@ -67,27 +154,31 @@ ul#vsReservatieInfo li input[type=text] {
 }
 
 /*Voorstellingen*/
-table#voorstelling_tabel {
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 10px;
+
+/*Nieuwe Gebruiker*/
+div#wrapper.nieuwe_gebruiker section#content {
+	position: relative;
+	overflow: hidden;
 }
 
-table#voorstelling_tabel th {
-	padding: 2px;
+div#wrapper.nieuwe_gebruiker section#content fieldset {
+	display: table-cell;
+			width: 300px;
+	height: 300px;
+			vertical-align: bottom;
+			background: #325466;
 }
 
-table#voorstelling_tabel td {
-	padding: 2px;
+div#wrapper.nieuwe_gebruiker section#content fieldset input {
+	width: 100px;
+	margin:auto;
 }
 
-table#voorstelling_tabel {
-	width: 900px;
+div.label_n_input {
+overflow:hidden;
+background: #ff5600;
 }
 
-
-
-
-.error_msg{
-	margin:20px;
+.error_msg {
+	margin: 20px;
 }

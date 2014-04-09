@@ -35,13 +35,23 @@ public class SVTGetVoorstellingen extends HttpServlet {
 			}else{
 				DAOGenres genreDAO = new DAOGenres();
 				request.setAttribute("voorstellingList", null);
-				request.setAttribute("subtitle", genreDAO.getGenre(id));
-				request.setAttribute("fouten", "Het gevraagde genre kan niet worden gevonden.");
+				String genre= genreDAO.getGenre(id);
+				if(genre == null){
+					request.setAttribute("foutTitel", "Genre niet gevonden");
+					request.setAttribute("fouten", "het door u meegegeven genre word niet teruggevonden in onze databanken. </br>"
+							+ "Gebruik a.u.b. het menu om tussen pagina's te navigeren.");
+				}else{
+					request.setAttribute("subtitle", genre);
+					request.setAttribute("foutTitel", "Geen voorstellingen");
+					request.setAttribute("fouten", "Er zijn geen voorstellingen gevonden binnen het genre " + genre+".");
+				}
 			}
 		} catch (DAOException daoExc) {
 			request.setAttribute("fouten", daoExc.getMessage());
 		}catch(NumberFormatException numExc){
-			request.setAttribute("fouten", "Het gevraagde genre kan niet worden gevonden.");
+			request.setAttribute("foutTitel", "Onjuiste voorstellingsID");
+			request.setAttribute("fouten", "Het meegegeven voorstellingsID kan niet worden verwerkt.</br>"
+					+ "Gebruik a.u.b. het menu om tussen pagina's te navigeren.");
 		}
 		request.setAttribute("logo", "voorstellingen.png");
 		RequestDispatcher dispatcher = request.getRequestDispatcher(VIEW);

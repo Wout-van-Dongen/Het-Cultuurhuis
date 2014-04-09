@@ -20,4 +20,5 @@
 			</core:otherwise>
 		</core:choose>
 	</h2>
+	<core:import url="secondaryMenu.jsp" />
 </header>

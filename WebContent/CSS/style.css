@@ -1,4 +1,9 @@
-nav.genres h2, nav#main_menu {
+div#wrapper {
+	border-width: 5px;
+	border-style: double;
+}
+
+nav#main_menu h2,nav#main_menu {
 	border-style: solid;
 	border-width: 0px;
 }
@@ -9,17 +14,22 @@ nav#main_menu ul li a {
 	border-left-style: groove;
 }
 
-div#wrapper {
-	border-width: 5px;
-	border-style: double;
-}
-
-a.button {
-	border-width: 2px;
-	border-style: groove;
-}
-
-section table#voorstelling_tabel td {
+table.voorstelling_weergave td {
 	border-width: 1px;
 	border-style: solid;
+}
+
+table.voorstelling_weergave thead {
+	border-width: 1px;
+	border-style: solid;
+}
+
+nav#secondary_menu ul{
+border-style: groove;
+border-width: 2px;
+}
+
+nav#secondary_menu ul li a{
+	border-left-style:groove;
+	border-left-width:2px;
 }

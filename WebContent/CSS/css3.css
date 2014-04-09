@@ -6,3 +6,12 @@ nav#main_menu h2, nav#main_menu{
 	border-bottom-right-radius: 10px;
 	border-top-left-radius: 10px;
 }
+
+
+nav#secondary_menu ul{
+	border-top-left-radius:100px 20px;
+	}
+
+nav#secondary_menu ul li a.first{
+	border-top-left-radius:100px 20px;
+}

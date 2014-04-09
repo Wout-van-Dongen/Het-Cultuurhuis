@@ -1,76 +1,143 @@
 body {
-	background: #cccccc;
+	background-color: #cccccc;
 }
 
 header h1,header h2 {
 	color: #000033;
 }
 
-nav.genres h2 {
-	background: #ccccff;
-	border-color: #ccccff;
+div#wrapper {
+	background-color: #ffffff;
+	border-color: #cccccc;
 }
 
-div#wrapper.reservaties nav#main_menu h2 {
-	background: #EAAE24;
-	border-color: #EAAE24;
+/*==Header===========================*/
+
+/*==Main Menu========================*/
+
+/*Voorstellingen*/
+nav.genres h2 {
+	background-color: #ccccff;
+	border-color: #ccccff;
 }
 
 nav.genres ul li a {
 	color: #000055;
-	background: #ccccff;
-	border-color:#ccccff;
-}
-div#wrapper.reservaties nav#main_menu ul li a {
-	color: #553300;
-	background: #EAAE24;
-	border-color:#EAAE24;
-}
-div#wrapper.reservaties nav#main_menu ul li a:hover {
-	background: #eeeeee;
-	border-color:#eeeeee;
+	background-color: #ccccff;
+	border-color: #ccccff;
 }
 
 nav.genres ul li a:hover {
-	background: #eeeeee;
+	background-color: #eeeeee;
 	border-color: #eeeeee;
 }
 
-nav.genres{
-background: #ccccff;
-}
-div#wrapper.reservaties nav#main_menu{
-background: #EAAE24;
+nav.genres {
+	background-color: #ccccff;
 }
 
+/*Reservaties*/
+div#wrapper.reservaties nav#main_menu h2 {
+	background-color: #EAAE24;
+	border-color: #EAAE24;
+}
+
+div#wrapper.reservaties nav#main_menu {
+	background-color: #EAAE24;
+}
+
+div#wrapper.reservaties nav#main_menu ul li a {
+	color: #553300;
+	background-color: #EAAE24;
+	border-color: #EAAE24;
+}
+
+div#wrapper.reservaties nav#main_menu ul li a:hover {
+	background-color: #eeeeee;
+	border-color: #eeeeee;
+}
+
+/* Winkelmand*/
+div#wrapper.winkelmand nav#main_menu h2 {
+	background-color: #00B5BF;
+	border-color: #00B5BF;
+}
+
+div#wrapper.winkelmand nav#main_menu {
+	background-color: #00B5BF;
+}
+
+/*Nieuwe Gebruiker*/
+div#wrapper.nieuwe_gebruiker nav#main_menu h2 {
+	color:#ffffff;
+	background-color: #3E3D40;
+	border-color: #3E3D40;
+}
+
+div#wrapper.nieuwe_gebruiker nav#main_menu {
+	background-color: #3E3D40;
+}
+
+/*==Secondary Menu=================================*/
+nav#secondary_menu ul {
+	background-color: #000000;
+	border-color: #333333;
+}
+
+nav#secondary_menu ul li a {
+	color: #ffffff;
+}
+
+nav#secondary_menu ul li a:hover {
+	color: #000000;
+	background-color: #cccccc;
+}
+
+/*==Content========================================*/
+
+/*Voorstellingen*/
+table#voorstelling_inhoud tr:nth-child(even) td {
+	background-color: #ddddff;
+}
+
+table#voorstelling_inhoud tr:nth-child(odd) td {
+	background-color: #ccccff;
+}
+
+table#voorstelling_inhoud th {
+	background-color: #aaaacc;
+}
+
+table#voorstelling_inhoud td,table#voorstelling_inhoud thead {
+	border-color: #ccccff;
+}
+
+/*Winkelmand*/
+table#winkelmand_inhoud tbody tr:nth-child(odd) td {
+	background-color: #53BABF;
+}
+
+table#winkelmand_inhoud tbody tr:nth-child(even) td {
+	background-color: #8ECCCF;
+}
+
+table#winkelmand_inhoud tfoot,table#winkelmand_inhoud thead {
+	background-color: #00888F;
+}
+
+table#winkelmand_inhoud td {
+	border-color: #00B5BF;
+}
+
+table#winkelmand_inhoud td {
+	border-color: #00B5BF;
+}
+
+/*==Overall Classes===================================*/
 .red {
 	color: #FF0000;
 }
 
-div#wrapper {
-	background: #ffffff;
-	border-color:#cccccc;
-}
-
-table#voorstelling_tabel tr:nth-child(even) td {
-	background: #ddddff;
-}
-
-table#voorstelling_tabel tr:nth-child(odd) td {
-	background: #ccccff;
-}
-
-table#voorstelling_tabel th {
-	background: #aaaacc;
-}
-
-table#voorstelling_tabel td {
-	border-color:#ccccff;
-}
-
-
-
-
-.error_msg{
-	color:#330000;
+.error_msg {
+	color: #330000;
 }

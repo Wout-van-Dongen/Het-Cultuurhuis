@@ -25,10 +25,17 @@ nav#main_menu h2 {
 	font-family: Cultural, Arial;
 }
 
+
 nav#main_menu ul li a {
 	font-family: Arial;
 	font-size: 10pt;
 }
+/*==Secondary Menu=========================*/
+
+nav#secondary_menu ul li a {
+text-align: center;
+}
+
 /*==Content================================*/
 
 /*General*/
@@ -37,24 +44,45 @@ section h2 {
 	font-family: Cultural, "Times new Roman"
 }
 
+table.voorstelling_weergave th {
+	font-weight: bolder;
+	text-align: center;
+	font-size: 10pt;
+	vertical-align: middle;
+}
+
+table.voorstelling_weergave td {
+	font-size: 10pt;
+	text-align: center;
+}
+
+td.title, td.executors{
+	text-align: left !important;
+}
+td.price{
+	text-align: right !important;
+}
+
 /*Reservaties*/
 ul#vsReservatieInfo li span.info {
 	font-weight: bolder;
 }
 
-/*Voorstellingen*/
-table#voorstelling_tabel th {
-	font-weight: bolder;
-	text-align: center;
-	font-size: 10pt;
-}
 
-table#voorstelling_tabel td {
-	font-size: 10pt;
-	text-align: center;
-}
+
+/*Voorstellingen*/
+
+/*==Overall Classes======================================*/
 
 .error_msg {
 	font-size: 12pt;
+	font-weight: bolder;
+}
+
+.text_right{
+	text-align: right !important;
+}
+
+.bold{
 	font-weight: bolder;
 }
