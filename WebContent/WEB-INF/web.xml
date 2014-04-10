@@ -6,7 +6,11 @@
   </welcome-file-list>
   <error-page>
     <error-code>404</error-code>
-    <location>/JSP/404.jsp</location>
+    <location>/JSP/ErrorPages/404.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/JSP/ErrorPages/500.jsp</location>
   </error-page>
   <servlet>
     <servlet-name>getGenres</servlet-name>
@@ -14,7 +18,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>getGenres</servlet-name>
-    <url-pattern>/getGenres</url-pattern>
+    <url-pattern>/genres</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>getVoorstellingen</servlet-name>
@@ -22,14 +26,22 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>getVoorstellingen</servlet-name>
-    <url-pattern>/getVoorstellingen</url-pattern>
+    <url-pattern>/voorstellingen</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>reserveer</servlet-name>
     <servlet-class>be.vdab.cultuurhuis.servlets.SVTReserveer</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>reserveer</servlet-name>
-    <url-pattern>/voorstellingen/reserveer</url-pattern>
+    <url-pattern>/reserveer</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>winkelmand</servlet-name>
+    <servlet-class>be.vdab.cultuurhuis.servlets.SVTGetWinkelmand</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>winkelmand</servlet-name>
+    <url-pattern>/winkelmand</url-pattern>
   </servlet-mapping>
 </web-app>

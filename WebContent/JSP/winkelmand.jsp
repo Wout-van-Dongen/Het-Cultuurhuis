@@ -13,8 +13,8 @@
 <body>
 	<div id="wrapper" class="winkelmand">
 		<core:set var="logo" scope="request" value="winkelmand" />
-		<core:import url="header.jsp" />
-				<nav id="main_menu">
+		<jsp:include page="header.jsp"/>
+		<nav id="main_menu">
 			<h2>Winkelmand</h2>
 		</nav>
 		<section id="content">
@@ -29,8 +29,7 @@
 							<th class="price" rowspan="2">Prijs</th>
 							<th class="seats" rowspan="2">Plaatsen</th>
 							<th class="interact" rowspan=2><input type="submit"
-								value="Verwijderen" />
-							</th>
+								value="Verwijderen" /></th>
 						</tr>
 						<tr>
 							<th class="date">Datum</th>
@@ -63,7 +62,7 @@
 								<tr>
 									<td colspan=7>Uw winkelmand is leeg!</td>
 								</tr>
-															</core:otherwise>
+							</core:otherwise>
 						</core:choose>
 					</tbody>
 					<tfoot>

@@ -156,27 +156,40 @@ ul#vsReservatieInfo li input[type=text] {
 /*Voorstellingen*/
 
 /*Nieuwe Gebruiker*/
-div#wrapper.nieuwe_gebruiker section#content {
-	position: relative;
-	overflow: hidden;
-}
-
-div#wrapper.nieuwe_gebruiker section#content fieldset {
+div.align_bottom {
 	display: table-cell;
-			width: 300px;
-	height: 300px;
-			vertical-align: bottom;
-			background: #325466;
-}
-
-div#wrapper.nieuwe_gebruiker section#content fieldset input {
-	width: 100px;
-	margin:auto;
+	width: 270px;
+	height: 200px;
+	vertical-align: bottom;
 }
 
 div.label_n_input {
-overflow:hidden;
-background: #ff5600;
+	display: block;
+	margin: auto;
+	height: 30px;
+}
+
+div#wrapper.nieuwe_gebruiker fieldset {
+	display: table-cell;
+	width: 270px;
+	margin-left: 30px;
+}
+
+div.label_n_input input[type=text],div.label_n_input input[type=password]
+	{
+	float: right;
+	width: 120px;
+}
+
+div.label_n_input label {
+	margin-left: 20px;
+	width: 80px;
+}
+
+div#wrapper.nieuwe_gebruiker section#content input[type=submit] {
+	margin: 20px;
+	width: 50px;
+	height: 30px;
 }
 
 .error_msg {

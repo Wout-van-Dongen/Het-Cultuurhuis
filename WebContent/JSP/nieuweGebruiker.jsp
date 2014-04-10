@@ -12,7 +12,7 @@
 <body>
 	<div id="wrapper" class="nieuwe_gebruiker">
 		<core:set var="logo" scope="request" value="nieuwe_gebruiker" />
-		<core:import url="header.jsp" />
+		<jsp:include page="header.jsp" />
 		<nav id="main_menu">
 			<h2>Nieuwe Gebruiker</h2>
 		</nav>
@@ -21,42 +21,55 @@
 			<form>
 				<fieldset>
 					<legend>Naam</legend>
-					<div class="label_n_input">
-						<label>Naam:</label> <input type="text" />
-					</div>
-					<div class="label_n_input">
-						<label>Voornaam</label> <input type="text" />
+					<div class="align_bottom">
+						<div class="label_n_input">
+							<label>Naam:</label> <input type="text" />
+						</div>
+						<div class="label_n_input">
+							<label>Voornaam:</label> <input type="text" />
+						</div>
 					</div>
 				</fieldset>
 				<fieldset>
 					<legend>Adres</legend>
-					<div class="label_n_input">
-						<label>Straat</label> <input type="text" />
-					</div>
-					<div class="label_n_input">
-						<label>Nr</label> <input type="text" />
-					</div>
-					<div class="label_n_input">
-						<label>Postcode:</label> <input type="text" />
-					</div>
-					<div class="label_n_input">
-						<label>Gemeente:</label> <input type="text" />
+					<div class="align_bottom">
+						<div class="label_n_input">
+							<label>Straat:</label><input type="text" />
+						</div>
+						<div class="label_n_input">
+							<label>Nr:</label> <input type="text" />
+						</div>
+						<div class="label_n_input">
+							<label>Postcode:</label> <input type="text" />
+						</div>
+						<div class="label_n_input">
+							<label>Gemeente:</label> <input type="text" />
+						</div>
 					</div>
 				</fieldset>
 				<fieldset>
 					<legend>Gebruiker gegevens</legend>
-					<div class="label_n_input">
-						<label>Gebruikersnaam:</label> <input type="text" />
-					</div>
-					<div class="label_n_input">
-						<label>Wachtwoord</label> <input type="password" />
-					</div>
-					<div class="label_n_input">
-						<label>Herhaal Wachtwoord</label> <input type="password" />
+					<div class="align_bottom">
+						<div class="label_n_input">
+							<label>Gebruikersnaam:</label> <input type="text" />
+						</div>
+						<div class="label_n_input">
+							<label>Wachtwoord:</label> <input type="password" />
+						</div>
+						<div class="label_n_input">
+							<label>Herhaal Wachtwoord:</label> <input type="password" />
+						</div>
 					</div>
 				</fieldset>
-				<input type="submit" value="OK" name="okay	" />
+				<div>
+					<input type="submit" value="OK" name="verzend" />
+				</div>
 			</form>
+			<ul>
+				<core:forEach var="entry" items="${invulFouten}">
+
+				</core:forEach>
+			</ul>
 		</section>
 	</div>
 </body>

@@ -1,12 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<core:set value="${pageContext.servletContext.contextPath}"
+	var="contextURL" />
+<meta http-equiv="Content-Type" content="text/html">
+<title>An error has occured!</title>
+<link rel="stylesheet" type="text/css"
+	href="${contextURL}/CSS/styles.css" />
 </head>
 <body>
-
+<div id="wrapper">
+		<jsp:include page="../header.jsp">
+			<jsp:param name="subtitle" value="${currentGenre}" />
+		</jsp:include>
+		<core:import url="/genres" />
+		<%-- imports the menu --%>
+		<section>
+			<h1>500</h1>
+			<h2>An error occured!</h2>
+		</section>
+	</div>
 </body>
 </html>

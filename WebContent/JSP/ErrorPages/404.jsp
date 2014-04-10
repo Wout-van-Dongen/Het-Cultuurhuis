@@ -8,14 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html">
 <title>Page not found!</title>
 <link rel="stylesheet" type="text/css"
-	href="${contextURL}/CSS/style.css" />
+	href="${contextURL}/CSS/styles.css" />
 </head>
 <body>
 	<div id="wrapper">
-		<core:import url="header.jsp">
-			<core:param name="subtitle" value="${currentGenre}" />
-		</core:import>
-		<core:import url="/getGenres" />
+		<jsp:include page="../header.jsp">
+			<jsp:param name="subtitle"  value="Not Found!" />
+		</jsp:include>
+		<core:import url="/genres" />
 		<%-- imports the menu --%>
 		<section>
 			<h1>404</h1>

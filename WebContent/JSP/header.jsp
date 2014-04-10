@@ -4,13 +4,18 @@
 
 <header id="voostelling_header">
 	<figure>
-		<img src="${contextURL}/IMG/${logo}.png"
-			alt="${logoAlt}"
-			title="${logoTitle}" />
+		<core:choose>
+			<core:when test="${logo == null}">
+				<img src="${contextURL}/IMG/voorstellingen.png" alt="" title="" />
+			</core:when>
+			<core:otherwise>
+				<img src="${contextURL}/IMG/${logo}.png" alt="${logoAlt}"
+					title="${logoTitle}" />
+			</core:otherwise>
+		</core:choose>
 	</figure>
-	<h1>
-		Het Cultuurhuis:
-		</h1><h2>
+	<h1>Het Cultuurhuis:</h1>
+	<h2>
 		<core:choose>
 			<core:when test="${subtitle != null}">
 				<core:out value="${subtitle}" />
@@ -20,5 +25,5 @@
 			</core:otherwise>
 		</core:choose>
 	</h2>
-	<core:import url="secondaryMenu.jsp" />
+	<jsp:include page="secondaryMenu.jsp" />
 </header>

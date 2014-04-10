@@ -13,8 +13,8 @@
 <body>
 	<div id="wrapper" class="voorstellingen">
 		<core:set var="logo" scope="request" value="voorstellingen" />
-		<core:import url="header.jsp" />
-		<core:import url="/getGenres" />
+		<jsp:include page="header.jsp" />
+		<core:import url="/genres" />
 		<%-- imports the menu --%>
 		<section id="content">
 			<core:choose>
@@ -44,6 +44,7 @@
 								</thead>
 								<tbody>
 									<core:forEach var="vs" items="${voorstellingList}">
+									<core:url var="urlGetVoorstelling" value="/reserveer?vID=${vs.voorstellingsNr}"/>
 										<tr>
 											<td class="date"><fmt:formatDate value="${vs.datum}"
 													pattern="dd/MM/yy" /></td>
@@ -57,7 +58,7 @@
 											<td class="interact"><core:choose>
 													<core:when test="${vs.vrijePlaatsen > 0}">
 														<a
-															href='voorstellingen/reserveer?vID=${vs.voorstellingsNr}'>Reserveer</a>
+															href='${urlGetVoorstelling}'>Reserveer</a>
 													</core:when>
 													<core:otherwise>
 														<strong class="red">Volzet!</strong>

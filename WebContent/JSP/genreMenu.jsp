@@ -9,8 +9,11 @@
 			<core:otherwise>
 				<core:if test="${!empty menuList}">
 					<core:forEach var="entry" items="${menuList}">
-						<li><a href="getVoorstellingen?gID=${entry.key}"><core:out
-									value="${entry.value}" /></a></li>
+						<core:url var="urlGetVoorstelling"
+							value="/voorstellingen?gID=${entry.key}" />
+						<li><a href="${urlGetVoorstelling}"> <core:out
+									value="${entry.value}" />
+						</a></li>
 					</core:forEach>
 				</core:if>
 			</core:otherwise>
