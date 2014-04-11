@@ -9,7 +9,7 @@
 				<img src="${contextURL}/IMG/voorstellingen.png" alt="" title="" />
 			</core:when>
 			<core:otherwise>
-				<img src="${contextURL}/IMG/${logo}.png" alt="${logoAlt}"
+				<img src="${contextURL}/IMG/logo_${page}.png" alt="${logoAlt}"
 					title="${logoTitle}" />
 			</core:otherwise>
 		</core:choose>
