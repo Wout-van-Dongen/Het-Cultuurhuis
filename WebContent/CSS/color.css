@@ -37,22 +37,22 @@ nav.genres {
 }
 
 /*Reservaties*/
-div#wrapper.reservaties nav#main_menu h2 {
+div#wrapper.reserverens nav#main_menu h2 {
 	background-color: #EAAE24;
 	border-color: #EAAE24;
 }
 
-div#wrapper.reservaties nav#main_menu {
+div#wrapper.reserverens nav#main_menu {
 	background-color: #EAAE24;
 }
 
-div#wrapper.reservaties nav#main_menu ul li a {
+div#wrapper.reserverens nav#main_menu ul li a {
 	color: #553300;
 	background-color: #EAAE24;
 	border-color: #EAAE24;
 }
 
-div#wrapper.reservaties nav#main_menu ul li a:hover {
+div#wrapper.reserverens nav#main_menu ul li a:hover {
 	background-color: #eeeeee;
 	border-color: #eeeeee;
 }
