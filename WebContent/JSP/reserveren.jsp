@@ -2,6 +2,7 @@
 <%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <core:set value="${pageContext.servletContext.contextPath}"
 	var="contextURL" />
+	<core:set var="page" scope="request" value="reserveren" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,7 @@
 </head>
 <body>
 <core:url var="urlGetVoorstelling" value="/voorstellingen"/>
-	<div id="wrapper" class="reservaties">
-		<core:set var="logo" scope="request" value="reserveer" />
+	<div id="wrapper" class="${page}">
 		<core:import url="header.jsp" />
 		<nav id="main_menu">
 			<h2>Reserveren</h2>

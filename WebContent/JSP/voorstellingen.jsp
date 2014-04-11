@@ -3,6 +3,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <core:set value="${pageContext.servletContext.contextPath}"
 	var="contextURL" />
+	<core:set var="page" scope="request" value="voorstellingen" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +12,7 @@
 	href="${contextURL}/CSS/styles.css" />
 </head>
 <body>
-	<div id="wrapper" class="voorstellingen">
-		<core:set var="logo" scope="request" value="voorstellingen" />
+	<div id="wrapper" class="${page}">
 		<jsp:include page="header.jsp" />
 		<core:import url="/genres" />
 		<%-- imports the menu --%>

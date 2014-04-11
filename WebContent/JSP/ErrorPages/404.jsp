@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
+<core:set value="${pageContext.servletContext.contextPath}"
+	var="contextURL" />
+<core:set var="page" scope="request" value="error400" />
 <!DOCTYPE html>
 <html>
 <head>
-<core:set value="${pageContext.servletContext.contextPath}"
-	var="contextURL" />
+
 <meta http-equiv="Content-Type" content="text/html">
 <title>Page not found!</title>
 <link rel="stylesheet" type="text/css"
 	href="${contextURL}/CSS/styles.css" />
 </head>
 <body>
-	<div id="wrapper">
+	<div id="wrapper" class="${page}">
 		<jsp:include page="../header.jsp">
 			<jsp:param name="subtitle"  value="Not Found!" />
 		</jsp:include>

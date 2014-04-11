@@ -2,6 +2,7 @@
 <%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <core:set value="${pageContext.servletContext.contextPath}"
 	var="contextURL" />
+	<core:set var="page" scope="request" value="nieuwe_gebruiker" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +11,8 @@
 	href="${contextURL}/CSS/styles.css">
 </head>
 <body>
-	<div id="wrapper" class="nieuwe_gebruiker">
-		<core:set var="logo" scope="request" value="nieuwe_gebruiker" />
+	<div id="wrapper"  class="${page}">
+		
 		<jsp:include page="header.jsp" />
 		<nav id="main_menu">
 			<h2>Nieuwe Gebruiker</h2>

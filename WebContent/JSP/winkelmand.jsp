@@ -3,6 +3,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <core:set value="${pageContext.servletContext.contextPath}"
 	var="contextURL" />
+<core:set var="page" scope="request" value="winkelmand" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
 </head>
 <body>
 	<div id="wrapper" class="winkelmand">
-		<core:set var="logo" scope="request" value="winkelmand" />
+		
 		<jsp:include page="header.jsp"/>
 		<nav id="main_menu">
 			<h2>Winkelmand</h2>
