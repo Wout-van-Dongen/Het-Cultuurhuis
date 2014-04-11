@@ -44,19 +44,19 @@
 								<core:forEach items="${basket}" var="entry">
 									<tr>
 										<td class="date"><fmt:formatDate
-												value="${entry.vs.datum}" pattern="dd/MM/yy" /></td>
+												value="${entry.voorstelling.datum}" pattern="dd/MM/yy" /></td>
 										<td class="time"><fmt:formatDate
-												value="${entry.vs.datum}" pattern="HH:mm" /></td>
-										<td class="title"><core:out value="${entry.vs.title}" /></td>
+												value="${entry.voorstelling.datum}" pattern="HH:mm" /></td>
+										<td class="title"><core:out value="${entry.voorstelling.title}" /></td>
 										<td class="executor"><core:out
-												value="${entry.vs.uitvoerders}" /></td>
-										<td class="price">${entry.vs.prijs}</td>
-										<td class="seats">${entry.plaatsen}</td>
+												value="${entry.voorstelling.uitvoerders}" /></td>
+										<td class="price">${entry.voorstelling.prijs}</td>
+										<td class="seats">${entry.aantalPlaatsen}</td>
 										<td class="interact"><input type="checkbox"
-											value="${entry.vs.voorstellingsNr}" /></td>
+											value="${entry.voorstelling.voorstellingsNr}" /></td>
 									</tr>
 									<core:set var="totalPrice"
-										value="${totalPrice + entry.vs.prijs}" />
+										value="${totalPrice + (entry.voorstelling.prijs*entry.aantalPlaatsen)}" />
 								</core:forEach>
 							</core:when>
 							<core:otherwise>
@@ -68,9 +68,8 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td class="text_right bold" colspan="5">Totaal:
-							</th>
-							<td class="price">€ ${totalPrice}</td>
+							<td colspan="4"></td>
+							<td  class="bold"  colspan="2" class="price">Totaal: € ${totalPrice}</td>
 							<td></td>
 						</tr>
 					</tfoot>

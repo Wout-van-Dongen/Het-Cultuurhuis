@@ -1,7 +1,9 @@
 package be.vdab.cultuurhuis.servlets;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -56,26 +58,24 @@ public class SVTReserveer extends HttpServlet {
 		if (request.getParameter("seats") != null || request.getParameter("vID") != null) {
 			HttpSession session = request.getSession();
 			@SuppressWarnings("unchecked")
-			Set<Boeking> geboekteVoorstellingen = (Set<Boeking>)session.getAttribute("winkelmand");
+			Map<Long, Long> geboekteVoorstellingen = (Map<Long, Long>)session.getAttribute("winkelmand");
 			if(geboekteVoorstellingen == null){
-				geboekteVoorstellingen = new LinkedHashSet<Boeking>();
+				geboekteVoorstellingen = new LinkedHashMap<Long, Long>();
 			}
-			try{			int id = Integer.parseInt(request.getParameter("vID"));
-			Voorstelling vs = voorstellingDAO.getVoorstelling(id);
-			if(vs !=null){
-				geboekteVoorstellingen.add(new Boeking(vs, Integer.parseInt(request.getParameter("seats"))));
+			try{
+				Long vID = Long.parseLong(request.getParameter("vID"));
+				Long seats = Long.parseLong(request.getParameter("seats"));
+				if(geboekteVoorstellingen.containsKey(vID)){
+					Long reservation = geboekteVoorstellingen.get(vID);
+					reservation += seats;
+					geboekteVoorstellingen.put(vID, reservation);
+				}else{
+					geboekteVoorstellingen.put(vID, seats);
+				}
 				session.setAttribute("winkelmand", geboekteVoorstellingen);
-			}else{
+			} catch(NumberFormatException numExc){
 				redirectURL="/reserveer";
-				request.setAttribute("fouten", "De gevraagde voorstelling kan niet worden gevonden.");
-			}
-			} catch (DAOException daoExc) {
-				redirectURL="/reserveer";
-				request.setAttribute("fouten", daoExc.getMessage());
-			}catch(NumberFormatException numExc){
-				redirectURL="/reserveer";
-				
-				request.setAttribute("fouten", "");
+				request.setAttribute("fouten", "Er is een ongeldige voorstelling of aantal plaatsen meegegeven.");
 			}finally{
 				response.sendRedirect(response.encodeRedirectURL(
 						request.getContextPath() + redirectURL));

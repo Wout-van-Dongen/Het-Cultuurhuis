@@ -3,6 +3,7 @@
 <core:set value="${pageContext.servletContext.contextPath}"
 	var="contextURL" />
 	<core:set var="page" scope="request" value="reserveren" />
+	<core:url var="urlGetVoorstelling" value="/voorstellingen"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,6 @@
 	href="${contextURL}/CSS/styles.css">
 </head>
 <body>
-<core:url var="urlGetVoorstelling" value="/voorstellingen"/>
 	<div id="wrapper" class="${page}">
 		<core:import url="header.jsp" />
 		<nav id="main_menu">

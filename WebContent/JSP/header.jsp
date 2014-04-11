@@ -5,8 +5,8 @@
 <header id="voostelling_header">
 	<figure>
 		<core:choose>
-			<core:when test="${logo == null}">
-				<img src="${contextURL}/IMG/voorstellingen.png" alt="" title="" />
+			<core:when test="${page == null}">
+				<img src="${contextURL}/IMG/logo_voorstellingen.png" alt="" title="" />
 			</core:when>
 			<core:otherwise>
 				<img src="${contextURL}/IMG/logo_${page}.png" alt="${logoAlt}"
