@@ -123,6 +123,11 @@ table#winkelmand_inhoud tbody tr:nth-child(even) td {
 
 table#winkelmand_inhoud tfoot,table#winkelmand_inhoud thead {
 	background-color: #00888F;
+	color:#ffffff;
+}
+
+table#winkelmand_inhoud tfoot td,table#winkelmand_inhoud th{
+	color:#ffffff;
 }
 
 table#winkelmand_inhoud td {
