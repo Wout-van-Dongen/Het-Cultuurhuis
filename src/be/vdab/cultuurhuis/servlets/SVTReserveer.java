@@ -2,9 +2,7 @@ package be.vdab.cultuurhuis.servlets;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import be.vdab.cultuurhuis.utils.DAOException;
 import be.vdab.cultuurhuis.data.DAOVoorstellingen;
-import be.vdab.cultuurhuis.entities.Boeking;
 import be.vdab.cultuurhuis.entities.Voorstelling;
 
 @WebServlet("/reserveer")
@@ -53,8 +50,9 @@ public class SVTReserveer extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		final String VIEW="/JSP/winkelmand.jsp";
 		String redirectURL ="/winkelmand";
+		DAOVoorstellingen voorstellingDAO = new DAOVoorstellingen();
+		Long vID = null, seats = null;
 		if (request.getParameter("seats") != null || request.getParameter("vID") != null) {
 			HttpSession session = request.getSession();
 			@SuppressWarnings("unchecked")
@@ -62,20 +60,55 @@ public class SVTReserveer extends HttpServlet {
 			if(geboekteVoorstellingen == null){
 				geboekteVoorstellingen = new LinkedHashMap<Long, Long>();
 			}
+
+			/*==Checking if someone tampered with the voorstellingsID==*/
 			try{
-				Long vID = Long.parseLong(request.getParameter("vID"));
-				Long seats = Long.parseLong(request.getParameter("seats"));
-				if(geboekteVoorstellingen.containsKey(vID)){
-					Long reservation = geboekteVoorstellingen.get(vID);
-					reservation += seats;
-					geboekteVoorstellingen.put(vID, reservation);
+				System.out.println(vID = Long.parseLong(request.getParameter("vID")));
+			}catch(NumberFormatException numExc){
+				System.out.println("Invalid vID");
+				redirectURL="/voorstellingen";
+				request.setAttribute("fouten", "Tik een getal.");
+				RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
+				dispatcher.forward(request, response);
+			}
+
+			try{
+				seats = Long.parseLong(request.getParameter("seats"));
+				Voorstelling vs = voorstellingDAO.getVoorstelling((vID.intValue()));
+				if(vs.getVrijePlaatsen() >= seats){				
+					if(geboekteVoorstellingen.containsKey(vID)){
+						Long reservation = geboekteVoorstellingen.get(vID);
+						reservation += seats;
+						geboekteVoorstellingen.put(vID, reservation);
+					}else{
+						geboekteVoorstellingen.put(vID, seats);
+					}
+					session.setAttribute("winkelmand", geboekteVoorstellingen);
+				}else if(vs.getVrijePlaatsen() == 0){
+					System.out.println("Invalid vID");
+					redirectURL="/JSP/reserveren.jsp";
+					request.setAttribute("fouten", "Er zijn geen vrije plaatsen meer voor deze voorstelling.");
+					request.setAttribute("voorstelling", vs);
+					RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
+					dispatcher.forward(request, response);
 				}else{
-					geboekteVoorstellingen.put(vID, seats);
+					redirectURL="/JSP/reserveren.jsp";
+					request.setAttribute("fouten", "Tik een getal tussen 1 en " + vs.getVrijePlaatsen() + ".");
+					request.setAttribute("voorstelling", vs);
+					RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
+					dispatcher.forward(request, response);
 				}
-				session.setAttribute("winkelmand", geboekteVoorstellingen);
-			} catch(NumberFormatException numExc){
-				redirectURL="/reserveer";
-				request.setAttribute("fouten", "Er is een ongeldige voorstelling of aantal plaatsen meegegeven.");
+			}catch(NumberFormatException numExc){
+				redirectURL="/JSP/Reserveren";
+				request.setAttribute("fouten", "Tik een getal.");
+				RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
+				dispatcher.forward(request, response);
+			} catch (DAOException daoExc) {
+				redirectURL="/voorstelling";
+				request.setAttribute("fouten", daoExc.getMessage());
+				RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
+				dispatcher.forward(request, response);
+			}catch(NullPointerException nullExc){
 			}finally{
 				response.sendRedirect(response.encodeRedirectURL(
 						request.getContextPath() + redirectURL));

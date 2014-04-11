@@ -4,23 +4,25 @@
 <core:set value="${pageContext.servletContext.contextPath}"
 	var="contextURL" />
 <core:set var="page" scope="request" value="winkelmand" />
+<core:url var="urlRemove" value="/winkelmand/remove" />
 <!DOCTYPE html>
 <html>
 <head>
 <core:import url="head.jsp" />
 <link rel="stylesheet" type="text/css"
 	href="${contextURL}/CSS/styles.css">
+<core:url var="urlVoorstellingen" value="/voorstellingen" />
 </head>
 <body>
 	<div id="wrapper" class="winkelmand">
-		
-		<jsp:include page="header.jsp"/>
+
+		<jsp:include page="header.jsp" />
 		<nav id="main_menu">
 			<h2>Winkelmand</h2>
 		</nav>
 		<section id="content">
 			<h2>Overzicht Winkelmand</h2>
-			<form>
+			<form method="post" action="${urlRemove}">
 				<table id="winkelmand_inhoud" class="voorstelling_weergave">
 					<thead>
 						<tr>
@@ -47,13 +49,14 @@
 												value="${entry.voorstelling.datum}" pattern="dd/MM/yy" /></td>
 										<td class="time"><fmt:formatDate
 												value="${entry.voorstelling.datum}" pattern="HH:mm" /></td>
-										<td class="title"><core:out value="${entry.voorstelling.title}" /></td>
+										<td class="title"><core:out
+												value="${entry.voorstelling.title}" /></td>
 										<td class="executor"><core:out
 												value="${entry.voorstelling.uitvoerders}" /></td>
 										<td class="price">${entry.voorstelling.prijs}</td>
 										<td class="seats">${entry.aantalPlaatsen}</td>
 										<td class="interact"><input type="checkbox"
-											value="${entry.voorstelling.voorstellingsNr}" /></td>
+											value="${entry.voorstelling.voorstellingsNr}" name="vID" /></td>
 									</tr>
 									<core:set var="totalPrice"
 										value="${totalPrice + (entry.voorstelling.prijs*entry.aantalPlaatsen)}" />
@@ -69,7 +72,8 @@
 					<tfoot>
 						<tr>
 							<td colspan="4"></td>
-							<td  class="bold"  colspan="2" class="price">Totaal: € ${totalPrice}</td>
+							<td class="bold" colspan="2" class="price">Totaal: €
+								${totalPrice}</td>
 							<td></td>
 						</tr>
 					</tfoot>

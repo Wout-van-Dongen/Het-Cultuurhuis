@@ -44,7 +44,7 @@
 											value="€" />${voorstelling.prijs}</span></li>
 								<li><label>Vrije Plaatsen:</label> <span class="info">${voorstelling.vrijePlaatsen}</span></li>
 								<li><label>Plaatsen:</label> <input type="text"
-									name="seats" /> <%--Insert Javascript to give warning if to-be-ordered number exceeds available seats --%>
+									name="seats" /><span class="info red bold">${controleFout}</span> <%--Insert Javascript to give warning if to-be-ordered number exceeds available seats --%>
 									<input type="hidden" name="vID" value="${voorstelling.voorstellingsNr}" /> <input
 									type="submit" value="Reserveren" /><label class="red">${foutmelding}</label></li>
 							</ul>

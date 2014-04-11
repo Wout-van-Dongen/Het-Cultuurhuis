@@ -56,7 +56,6 @@ public class SVTGetVoorstellingen extends HttpServlet {
 				request.setAttribute("fouten", "Het meegegeven voorstellingsID kan niet worden verwerkt.</br>"
 						+ "Gebruik a.u.b. het menu om tussen pagina's te navigeren.");
 			}
-			request.setAttribute("logo", "voorstellingen.png");
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(VIEW);
 		dispatcher.forward(request, response);

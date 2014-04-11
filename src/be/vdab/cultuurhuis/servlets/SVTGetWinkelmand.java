@@ -33,7 +33,7 @@ public class SVTGetWinkelmand extends HttpServlet {
 		Map<Long, Long> reservaties = (Map<Long, Long>)session.getAttribute("winkelmand");
 		if(reservaties == null){
 			reservaties = new LinkedHashMap<Long, Long>();
-			System.out.print("Geen reservaties binnen gekomen.\n");
+			
 		}
 		ArrayList<Reservatie> basket = new ArrayList<Reservatie>();
 		try{

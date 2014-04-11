@@ -40,7 +40,6 @@ public class DAOGenres extends DataAccesObject{
 			statement.setInt(1, vID);
 			rs = statement.executeQuery();
 			if(rs.next()){
-			System.out.println(rs.getString(1));
 			return rs.getString(1);
 			}else{
 				return null;

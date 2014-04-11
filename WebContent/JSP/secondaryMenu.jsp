@@ -3,17 +3,20 @@
 	<core:url var="urlBevestig" value="/bevestigen" />
 	<core:url var="urlVoorstelling" value="/voorstellingen" />
 	<core:url var="urlWinkelmand" value="/winkelmand" />
-	<core:if test="${!empty winkelmand}">
-		<ul>
-			<core:choose>
-				<core:when test="${logo == 'winkelmand' }">
-					<li><a class="first" href="${urlVoorstelling}">Voorstellingen</a></li>
-				</core:when>
-				<core:otherwise>
+	<core:choose>
+		<core:when test="${page == 'winkelmand' }">
+			<ul>
+				<li><a class="first" href="${urlVoorstelling}">Voorstellingen</a></li>
+				<li><a href="${urlBevestig}">Bevestiging Registratie</a></li>
+			</ul>
+		</core:when>
+		<core:otherwise>
+			<core:if test="${!empty winkelmand}">
+				<ul>
 					<li><a class="first" href="${urlWinkelmand}">Reservatiemandje</a></li>
-				</core:otherwise>
-			</core:choose>
-			<li><a href="${urlBevestig}">Bevestiging Registratie</a></li>
-		</ul>
-	</core:if>
+					<li><a href="${urlBevestig}">Bevestiging Registratie</a></li>
+				</ul>
+			</core:if>
+		</core:otherwise>
+	</core:choose>
 </nav>
