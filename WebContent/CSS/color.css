@@ -78,6 +78,17 @@ div#wrapper.nieuwe_gebruiker nav#main_menu {
 	background-color: #3E3D40;
 }
 
+/*Bevestigen*/
+div#wrapper.bevestigen nav#main_menu h2 {
+	color:#000000;
+	background-color: #cccccc;
+	border-color: #cccccc;
+}
+
+div#wrapper.bevestigen nav#main_menu {
+	background-color: #cccccc;
+}
+
 /*==Secondary Menu=================================*/
 nav#secondary_menu ul {
 	background-color: #000000;
