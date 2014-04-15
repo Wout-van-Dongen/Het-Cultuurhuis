@@ -26,7 +26,7 @@ public class SVTGetWinkelmand extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		final String VIEW ="/JSP/winkelmand.jsp";
+		final String VIEW ="/WEB-INF/JSP/winkelmand.jsp";
 		DAOVoorstellingen voorstellingsDAO = new DAOVoorstellingen();
 		HttpSession session = request.getSession();
 		@SuppressWarnings("unchecked")

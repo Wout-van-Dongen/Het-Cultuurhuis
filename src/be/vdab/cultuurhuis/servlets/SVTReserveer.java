@@ -29,7 +29,7 @@ public class SVTReserveer extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAOVoorstellingen voorstellingDAO = new DAOVoorstellingen();
-		String view ="/JSP/reserveren.jsp";
+		String view ="/WEB-INF/JSP/reserveren.jsp";
 		try {
 			int id = Integer.parseInt(request.getParameter("vID"));
 			Voorstelling vs = voorstellingDAO.getVoorstelling(id);
@@ -86,20 +86,20 @@ public class SVTReserveer extends HttpServlet {
 					session.setAttribute("winkelmand", geboekteVoorstellingen);
 				}else if(vs.getVrijePlaatsen() == 0){
 					System.out.println("Invalid vID");
-					redirectURL="/JSP/reserveren.jsp";
+					redirectURL="/WEB-INF/JSP/reserveren.jsp";
 					request.setAttribute("fouten", "Er zijn geen vrije plaatsen meer voor deze voorstelling.");
 					request.setAttribute("voorstelling", vs);
 					RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
 					dispatcher.forward(request, response);
 				}else{
-					redirectURL="/JSP/reserveren.jsp";
+					redirectURL="/WEB-INF/JSP/reserveren.jsp";
 					request.setAttribute("fouten", "Tik een getal tussen 1 en " + vs.getVrijePlaatsen() + ".");
 					request.setAttribute("voorstelling", vs);
 					RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
 					dispatcher.forward(request, response);
 				}
 			}catch(NumberFormatException numExc){
-				redirectURL="/JSP/Reserveren";
+				redirectURL="/WEB-INF/JSP/Reserveren";
 				request.setAttribute("fouten", "Tik een getal.");
 				RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
 				dispatcher.forward(request, response);

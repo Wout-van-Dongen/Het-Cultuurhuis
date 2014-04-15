@@ -18,7 +18,7 @@ import be.vdab.cultuurhuis.entities.Voorstelling;
 
 @WebServlet("/voorstellingen")
 public class SVTGetVoorstellingen extends HttpServlet {
-	private static final String VIEW="/JSP/voorstellingen.jsp";
+	private static final String VIEW="/WEB-INF/JSP/voorstellingen.jsp";
 	private static final long serialVersionUID = 1L;
 
 	public SVTGetVoorstellingen() {

@@ -39,9 +39,6 @@ public class SVTRemoveFromWinkelmand extends HttpServlet {
 				}
 			} catch(NumberFormatException numExc){
 				redirectURL="/winkelmand";
-			}finally{
-				response.sendRedirect(response.encodeRedirectURL(
-						request.getContextPath() + redirectURL));
 			}
 		}
 		response.sendRedirect(response.encodeRedirectURL(
