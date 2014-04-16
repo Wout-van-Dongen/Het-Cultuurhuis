@@ -157,3 +157,7 @@ table#winkelmand_inhoud td {
 .error_msg {
 	color: #330000;
 }
+
+ul.error_msg li{
+	color:#ff0000;
+}

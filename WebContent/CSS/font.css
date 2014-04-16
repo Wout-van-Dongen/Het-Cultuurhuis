@@ -100,3 +100,7 @@ legend{
 .bold{
 	font-weight: bolder;
 }
+
+ul.error_msg li{
+	font-size:10pt;
+}

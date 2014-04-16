@@ -33,3 +33,7 @@ nav#secondary_menu ul li a{
 	border-left-style:groove;
 	border-left-width:2px;
 }
+
+ul.error_msg li{
+	list-style-type: square;
+}
