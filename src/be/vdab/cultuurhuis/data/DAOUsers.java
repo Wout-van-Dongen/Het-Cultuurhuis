@@ -69,7 +69,7 @@ public class DAOUsers extends DataAccesObject{
 			}
 
 		}catch(SQLException sqlExc){
-			throw new DAOException("Kan users niet lezen uit database", sqlExc);
+			throw new DAOException("Kan users niet schrijven naar database", sqlExc);
 		}
 
 	}

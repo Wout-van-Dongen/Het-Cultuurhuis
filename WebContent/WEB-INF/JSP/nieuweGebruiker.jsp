@@ -2,7 +2,7 @@
 <%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <core:set value="${pageContext.servletContext.contextPath}"
 	var="contextURL" />
-	<core:set var="page" scope="request" value="nieuwe_gebruiker" />
+<core:set var="page" scope="request" value="nieuwe_gebruiker" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,23 +11,24 @@
 	href="${contextURL}/CSS/styles.css">
 </head>
 <body>
-	<div id="wrapper"  class="${page}">
-		
+	<div id="wrapper" class="${page}">
+
 		<jsp:include page="header.jsp" />
 		<nav id="main_menu">
 			<h2>Nieuwe Gebruiker</h2>
 		</nav>
 		<section id="content">
 			<h2>Registratie</h2>
-			<form>
+			<core:url var="register" value="/registreer"/>
+			<form method="post" action="${register}">
 				<fieldset>
 					<legend>Naam</legend>
 					<div class="align_bottom">
 						<div class="label_n_input">
-							<label>Naam:</label> <input type="text" />
+							<label>Naam:</label> <input type="text" value="${familienaam}" name="familienaam" />
 						</div>
 						<div class="label_n_input">
-							<label>Voornaam:</label> <input type="text" />
+							<label>Voornaam:</label> <input type="text" value="${voornaam}" name="voornaam"/>
 						</div>
 					</div>
 				</fieldset>
@@ -35,16 +36,16 @@
 					<legend>Adres</legend>
 					<div class="align_bottom">
 						<div class="label_n_input">
-							<label>Straat:</label><input type="text" />
+							<label>Straat:</label><input type="text" value="${straat}" name="straat"/>
 						</div>
 						<div class="label_n_input">
-							<label>Nr:</label> <input type="text" />
+							<label>Nr:</label> <input type="text" value="${huisnr}" name="huisnr"/>
 						</div>
 						<div class="label_n_input">
-							<label>Postcode:</label> <input type="text" />
+							<label>Postcode:</label> <input type="text" value="${postcode}" name="postcode"/>
 						</div>
 						<div class="label_n_input">
-							<label>Gemeente:</label> <input type="text" />
+							<label>Gemeente:</label> <input type="text" value="${gemeente}" name="gemeente"/>
 						</div>
 					</div>
 				</fieldset>
@@ -52,13 +53,15 @@
 					<legend>Gebruiker gegevens</legend>
 					<div class="align_bottom">
 						<div class="label_n_input">
-							<label>Gebruikersnaam:</label> <input type="text" />
+							<label>Gebruikersnaam:</label> <input type="text" value="${user}"
+								name="username" />
 						</div>
 						<div class="label_n_input">
-							<label>Wachtwoord:</label> <input type="password" />
+							<label>Wachtwoord:</label> <input type="password" name="pass" />
 						</div>
 						<div class="label_n_input">
-							<label>Herhaal Wachtwoord:</label> <input type="password" />
+							<label>Herhaal Wachtwoord:</label> <input type="password"
+								name="confirmpass" />
 						</div>
 					</div>
 				</fieldset>
@@ -66,9 +69,9 @@
 					<input type="submit" value="OK" name="verzend" />
 				</div>
 			</form>
-			<ul>
-				<core:forEach var="entry" items="${invulFouten}">
-
+			<ul class="error_msg">
+				<core:forEach var="error" items="${errors}">
+					<li>${error}</li>
 				</core:forEach>
 			</ul>
 		</section>

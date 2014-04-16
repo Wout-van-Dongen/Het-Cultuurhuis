@@ -30,24 +30,28 @@ public class SVTLogin extends HttpServlet {
 		check = request.getParameter("action");
 		pass = request.getParameter("pass");
 		user = request.getParameter("username");
-		if(pass.length() == 0 || user.length() == 0){
-			view = "/WEB-INF/JSP/bevestigen.jsp";
-			if(user.length() == 0){
-				err_msgs.add("Gelieve een gebruikersnaam in te vullen.");
-			}
-			if(pass.length() == 0){
-				err_msgs.add("Gelieve een wachtwoord in te vullen.");
-			}
-		}else if(pass.length()<8 || user.length()<4){
-			if(pass.length()<8){
-				err_msgs.add("Uw gebruikersnaam voldoet niet aan de minimum vereisten.");
-			}
-			view = "/WEB-INF/JSP/bevestigen.jsp";
-			if(pass.length()<8){
-				err_msgs.add("Uw wachtwoord voldoet niet aan de minimum vereisten.");
-			}
-		}else{
-			if(check.equals("lookup")){
+
+		//Kijk na of de gebruikersnaam en het paswoord overeen komen
+
+		if(check.equals("lookup")){
+
+			if(pass.length() == 0 || user.length() == 0){
+				view = "/WEB-INF/JSP/bevestigen.jsp";
+				if(user.length() == 0){
+					err_msgs.add("Gelieve een gebruikersnaam in te vullen.");
+				}
+				if(pass.length() == 0){
+					err_msgs.add("Gelieve een wachtwoord in te vullen.");
+				}
+			}else if(pass.length()<8 || user.length()<4){
+				if(pass.length()<8){
+					err_msgs.add("Uw gebruikersnaam voldoet niet aan de minimum vereisten.");
+				}
+				view = "/WEB-INF/JSP/bevestigen.jsp";
+				if(pass.length()<8){
+					err_msgs.add("Uw wachtwoord voldoet niet aan de minimum vereisten.");
+				}
+
 				view="/WEB-INF/JSP/bevestigen.jsp";
 				HttpSession session = request.getSession();
 				DAOUsers userDAO = new DAOUsers();
@@ -60,20 +64,30 @@ public class SVTLogin extends HttpServlet {
 				}catch(DAOException daoExc){
 					err_msgs.add(daoExc.getMessage());
 				}
-
-
-			}else if(check.equals("new")){
-				view="/WEB-INF/JSP/nieuweGebruiker.jsp";
-				System.out.println("Button value = \"new\"!\nSource: SVTLogin.java");
-			}else{
-				view="/WEB-INF/JSP/bevestigen.jsp";
-				System.out.println("No valid button value!\nSource: SVTLogin.java");
 			}
+
+
+			//Ga naar registratie nieuwe gebruiker
+
+		}else if(check.equals("new")){
+			view="/WEB-INF/JSP/nieuweGebruiker.jsp";
+
+			if(user != null){
+				request.setAttribute("user", user);
+			}
+
+
+
+
+
+		}else{
+			view="/WEB-INF/JSP/bevestigen.jsp";
+			System.out.println("No valid button value!\nSource: SVTLogin.java");
 		}
+
 		request.setAttribute("errors", err_msgs);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
-
 	}
 }
 
