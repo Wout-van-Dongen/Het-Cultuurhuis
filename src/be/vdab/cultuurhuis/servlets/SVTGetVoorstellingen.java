@@ -19,6 +19,7 @@ import be.vdab.cultuurhuis.entities.Voorstelling;
 @WebServlet("/voorstellingen")
 public class SVTGetVoorstellingen extends HttpServlet {
 	private static final String VIEW="/WEB-INF/JSP/voorstellingen.jsp";
+	ArrayList<String> err_msgs = null;
 	private static final long serialVersionUID = 1L;
 
 	public SVTGetVoorstellingen() {
@@ -26,6 +27,7 @@ public class SVTGetVoorstellingen extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		err_msgs = new ArrayList<String>();
 		DAOVoorstellingen voorstellingDAO = new DAOVoorstellingen();
 		request.setCharacterEncoding("UTF-8");
 		if(request.getParameter("gID") != null){
@@ -40,23 +42,22 @@ public class SVTGetVoorstellingen extends HttpServlet {
 					request.setAttribute("voorstellingList", null);
 					String genre= genreDAO.getGenre(id);
 					if(genre == null){
-						request.setAttribute("foutTitel", "Genre niet gevonden");
-						request.setAttribute("fouten", "het door u meegegeven genre word niet teruggevonden in onze databanken. </br>"
+						err_msgs.add("het door u meegegeven genre word niet teruggevonden in onze databanken. </br>"
 								+ "Gebruik a.u.b. het menu om tussen pagina's te navigeren.");
 					}else{
 						request.setAttribute("subtitle", genre);
-						request.setAttribute("foutTitel", "Geen voorstellingen");
-						request.setAttribute("fouten", "Er zijn geen voorstellingen gevonden binnen het genre " + genre+".");
+						err_msgs.add("Er zijn geen voorstellingen gevonden binnen het genre " + genre+".");
 					}
 				}
 			} catch (DAOException daoExc) {
-				request.setAttribute("fouten", daoExc.getMessage());
+				err_msgs.add(daoExc.getMessage());
 			}catch(NumberFormatException numExc){
-				request.setAttribute("foutTitel", "Onjuiste voorstellingsID");
-				request.setAttribute("fouten", "Het meegegeven voorstellingsID kan niet worden verwerkt.</br>"
+				System.out.println("numformatexc");
+				err_msgs.add("Het meegegeven voorstellingsID kan niet worden verwerkt.</br>"
 						+ "Gebruik a.u.b. het menu om tussen pagina's te navigeren.");
 			}
 		}
+		request.setAttribute("errors", err_msgs);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(VIEW);
 		dispatcher.forward(request, response);
 	}

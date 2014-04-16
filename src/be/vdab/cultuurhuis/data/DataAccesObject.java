@@ -29,7 +29,7 @@ public abstract class DataAccesObject {
 					context.close();
 				}
 			}catch(NamingException nmExc){
-throw new DAOException("Kan " + JNDI + " niet sluiten!", nmExc);
+				throw new DAOException("Kan " + JNDI + " niet sluiten!", nmExc);
 			}
 		}
 

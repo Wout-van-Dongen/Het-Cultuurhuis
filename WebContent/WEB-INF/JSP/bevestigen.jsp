@@ -28,11 +28,16 @@
 				<button type= "submit" value="new" name="action">Ik ben
 					nieuw</button>
 			</form>
+						<ul class="error_msg">
+			<core:forEach var="error" items="${errors}">
+			<li>${error}</li>
+			</core:forEach>
+			</ul>	
 			<h2>Stap 2:Bevestigen</h2>
 			<form>
 			<button type="submit">Bevestig</button>	
 			</form>
-			
+		
 		</section>
 
 	</div>

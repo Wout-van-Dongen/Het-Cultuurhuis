@@ -1,6 +1,7 @@
 package be.vdab.cultuurhuis.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -20,62 +21,59 @@ import be.vdab.cultuurhuis.entities.Voorstelling;
 public class SVTReserveer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAOVoorstellingen voorstellingDAO = new DAOVoorstellingen();
-
+	ArrayList<String> err_msgs = null;
 	public SVTReserveer() {
 		super();
 
 	}
 
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAOVoorstellingen voorstellingDAO = new DAOVoorstellingen();
 		String view ="/WEB-INF/JSP/reserveren.jsp";
+			err_msgs = new ArrayList<String>();
 		try {
-			int id = Integer.parseInt(request.getParameter("vID"));
-			Voorstelling vs = voorstellingDAO.getVoorstelling(id);
-			if(vs !=null){
+			int vID = Integer.parseInt(request.getParameter("vID"));
+			Voorstelling vs = voorstellingDAO.getVoorstelling(vID);
+			if(vs != null){
 				request.setAttribute("voorstelling", vs);
 				request.setAttribute("subtitle", String.format("%s Reserveren", vs.getTitle()));
 			}else{
-				request.setAttribute("fouten", "De gevraagde voorstelling kan niet worden gevonden.");
+				err_msgs.add("De gevraagde voorstelling kan niet worden gevonden.");
 			}
 		} catch (DAOException daoExc) {
-			request.setAttribute("fouten", daoExc.getMessage());
+			err_msgs.add(daoExc.getMessage());
 		}catch(NumberFormatException numExc){
-			request.setAttribute("fouten", "De gevraagde voorstelling kan niet worden gevonden.");
+			err_msgs.add("De gevraagde voorstelling kan niet worden gevonden.");
 		}
+		request.setAttribute("errors", err_msgs);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String redirectURL ="/winkelmand";
+		String redirectURL ="/winkelmand", view = "/WEB-INF/JSP/reserveren.jsp";
+		err_msgs = new ArrayList<String>();
 		DAOVoorstellingen voorstellingDAO = new DAOVoorstellingen();
-		Long vID = null, seats = null;
-		if (request.getParameter("seats") != null || request.getParameter("vID") != null) {
-			HttpSession session = request.getSession();
-			@SuppressWarnings("unchecked")
-			Map<Long, Long> geboekteVoorstellingen = (Map<Long, Long>)session.getAttribute("winkelmand");
-			if(geboekteVoorstellingen == null){
-				geboekteVoorstellingen = new LinkedHashMap<Long, Long>();
-			}
-
-			/*==Checking if someone tampered with the voorstellingsID==*/
-			try{
-				System.out.println(vID = Long.parseLong(request.getParameter("vID")));
-			}catch(NumberFormatException numExc){
-				System.out.println("Invalid vID");
-				redirectURL="/voorstellingen";
-				request.setAttribute("fouten", "Tik een getal.");
-				RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
-				dispatcher.forward(request, response);
-			}
+		Long vID = null, seats = null, vrijePlaatsen;
+		Voorstelling vs = null;
+		if (request.getParameter("seats") != null && request.getParameter("vID") != null) {
+			
 
 			try{
+				vID = Long.parseLong(request.getParameter("vID"));
+				vs = voorstellingDAO.getVoorstelling((vID.intValue()));
 				seats = Long.parseLong(request.getParameter("seats"));
-				Voorstelling vs = voorstellingDAO.getVoorstelling((vID.intValue()));
-				if(vs.getVrijePlaatsen() >= seats){				
+				vrijePlaatsen = vs.getVrijePlaatsen();
+				if(vrijePlaatsen >= seats && seats > 0){
+					HttpSession session = request.getSession();
+					@SuppressWarnings("unchecked")
+					Map<Long, Long> geboekteVoorstellingen = (Map<Long, Long>)session.getAttribute("winkelmand");
+					if(geboekteVoorstellingen == null){
+						geboekteVoorstellingen = new LinkedHashMap<Long, Long>();
+					}
 					if(geboekteVoorstellingen.containsKey(vID)){
 						Long reservation = geboekteVoorstellingen.get(vID);
 						reservation += seats;
@@ -84,35 +82,35 @@ public class SVTReserveer extends HttpServlet {
 						geboekteVoorstellingen.put(vID, seats);
 					}
 					session.setAttribute("winkelmand", geboekteVoorstellingen);
-				}else if(vs.getVrijePlaatsen() == 0){
-					System.out.println("Invalid vID");
-					redirectURL="/WEB-INF/JSP/reserveren.jsp";
-					request.setAttribute("fouten", "Er zijn geen vrije plaatsen meer voor deze voorstelling.");
+
+					response.sendRedirect(response.encodeRedirectURL(
+							request.getContextPath() + redirectURL));
+				}else if(vrijePlaatsen == 0){
+					err_msgs.add("Er zijn geen vrije plaatsen meer voor deze voorstelling.");
 					request.setAttribute("voorstelling", vs);
-					RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
-					dispatcher.forward(request, response);
+					this.gotoView(request, response, view);  
 				}else{
-					redirectURL="/WEB-INF/JSP/reserveren.jsp";
-					request.setAttribute("fouten", "Tik een getal tussen 1 en " + vs.getVrijePlaatsen() + ".");
+					err_msgs.add("Tik een getal tussen 1 en " + vrijePlaatsen + ".");
+					System.out.println();
 					request.setAttribute("voorstelling", vs);
-					RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
-					dispatcher.forward(request, response);
+					this.gotoView(request, response, view); 
 				}
 			}catch(NumberFormatException numExc){
-				redirectURL="/WEB-INF/JSP/Reserveren";
-				request.setAttribute("fouten", "Tik een getal.");
-				RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
-				dispatcher.forward(request, response);
+				err_msgs.add("Tik een getal.");
+				request.setAttribute("voorstelling", vs);
+				this.gotoView(request, response, view); 
 			} catch (DAOException daoExc) {
-				redirectURL="/voorstelling";
-				request.setAttribute("fouten", daoExc.getMessage());
-				RequestDispatcher dispatcher = request.getRequestDispatcher(redirectURL);
-				dispatcher.forward(request, response);
+				err_msgs.add(daoExc.getMessage());
+				this.gotoView(request, response, view); 
 			}catch(NullPointerException nullExc){
-			}finally{
-				response.sendRedirect(response.encodeRedirectURL(
-						request.getContextPath() + redirectURL));
 			}
 		}
 	}
+
+	private void gotoView(HttpServletRequest request, HttpServletResponse response, String view) throws ServletException, IOException{
+		request.setAttribute("errors", err_msgs);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+		dispatcher.forward(request, response);
+	}
+
 }

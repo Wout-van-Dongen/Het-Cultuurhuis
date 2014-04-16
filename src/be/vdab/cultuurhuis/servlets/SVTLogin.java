@@ -1,6 +1,7 @@
 package be.vdab.cultuurhuis.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,32 +9,72 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import be.vdab.cultuurhuis.data.DAOUsers;
+import be.vdab.cultuurhuis.utils.DAOException;
 
 @WebServlet("/login")
 public class SVTLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	ArrayList<String> err_msgs = null;
 
+	public SVTLogin() {
+		super();
 
-    public SVTLogin() {
-        super();
-       
-    }
-
-		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String view;
-		String check = request.getParameter("action");
-		if(check.equals("lookup")){
-			view="/WEB-INF/JSP/bevestigen.jsp";
-			System.out.println("Button value = \"lookup\"!\nSource: SVTLogin.java");
-		}else if(check.equals("new")){
-			view="/WEB-INF/JSP/nieuweGebruiker.jsp";
-			System.out.println("Button value = \"new\"!\nSource: SVTLogin.java");
-		}else{
-			view="/WEB-INF/JSP/bevestigen.jsp";
-			System.out.println("No valid button value!\nSource: SVTLogin.java");
-		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-		dispatcher.forward(request, response);
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		err_msgs = new ArrayList<String>();
+		String view = null, user = null, pass = null, check = null;
+		check = request.getParameter("action");
+		pass = request.getParameter("pass");
+		user = request.getParameter("username");
+		if(pass.length() == 0 || user.length() == 0){
+			view = "/WEB-INF/JSP/bevestigen.jsp";
+			if(user.length() == 0){
+				err_msgs.add("Gelieve een gebruikersnaam in te vullen.");
+			}
+			if(pass.length() == 0){
+				err_msgs.add("Gelieve een wachtwoord in te vullen.");
+			}
+		}else if(pass.length()<8 || user.length()<4){
+			if(pass.length()<8){
+				err_msgs.add("Uw gebruikersnaam voldoet niet aan de minimum vereisten.");
+			}
+			view = "/WEB-INF/JSP/bevestigen.jsp";
+			if(pass.length()<8){
+				err_msgs.add("Uw wachtwoord voldoet niet aan de minimum vereisten.");
+			}
+		}else{
+			if(check.equals("lookup")){
+				view="/WEB-INF/JSP/bevestigen.jsp";
+				HttpSession session = request.getSession();
+				DAOUsers userDAO = new DAOUsers();
+				try{
+					if(userDAO.login(user, pass)){
+						session.setAttribute("user", user);
+					}						else{
+						err_msgs.add("Onjuist wachtwoord en/of gebruikersnaam.");
+					}
+				}catch(DAOException daoExc){
+					err_msgs.add(daoExc.getMessage());
+				}
+
+
+			}else if(check.equals("new")){
+				view="/WEB-INF/JSP/nieuweGebruiker.jsp";
+				System.out.println("Button value = \"new\"!\nSource: SVTLogin.java");
+			}else{
+				view="/WEB-INF/JSP/bevestigen.jsp";
+				System.out.println("No valid button value!\nSource: SVTLogin.java");
+			}
+		}
+		request.setAttribute("errors", err_msgs);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+		dispatcher.forward(request, response);
+
+	}
 }
+
+

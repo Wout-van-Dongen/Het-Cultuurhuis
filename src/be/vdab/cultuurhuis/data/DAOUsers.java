@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import be.vdab.cultuurhuis.utils.DAOException;
 
@@ -15,8 +12,8 @@ public class DAOUsers extends DataAccesObject{
 
 
 	public boolean login(String user, String password) throws DAOException{
-		String QUERY ="SELECT paswoord fom klanten"
-				+ "where gebruikersnaam = ?";
+		String QUERY ="SELECT paswoord FROM klanten"
+				+ " WHERE gebruikersnaam = ?";
 		ResultSet rs = null;
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -39,9 +36,9 @@ public class DAOUsers extends DataAccesObject{
 	public boolean addUser(String voornaam, String familienaam, String straat, String huisnr, String postcode, String gemeente, String gebruikersnaam, String pass) throws DAOException{
 		final String
 		QUERY1 ="SELECT gebruikersnaam FROM klanten"
-				+ "where gebruikersnaam =  ?",
+				+ " WHERE gebruikersnaam =  ?",
 		QUERY2 ="INSERT INTO klanten (voornaam, familienaam, straat, huisnr, postcode, gemeente, gebruikersnaam, paswoord)"
-				+ "SET (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " SET (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		ResultSet rs = null;
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -62,7 +59,7 @@ public class DAOUsers extends DataAccesObject{
 				statement.setString(6,gemeente);
 				statement.setString(7,gebruikersnaam);
 				statement.setString(8,pass);
-				if(statement.execute()>0){
+				if(0<statement.executeUpdate()){
 					return true;
 				}else{
 					return false;
@@ -86,7 +83,7 @@ public class DAOUsers extends DataAccesObject{
 			userCode = userCode*3 + (int)c;
 		}
 		
-		return ""+passCode%(userCode%100);
+		return ""+passCode%(userCode%10000);
 
 	}
 
