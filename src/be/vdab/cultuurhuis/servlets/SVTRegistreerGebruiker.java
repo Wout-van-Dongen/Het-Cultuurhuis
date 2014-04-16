@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import be.vdab.cultuurhuis.data.DAOUsers;
+import be.vdab.cultuurhuis.entities.Persoon;
 import be.vdab.cultuurhuis.utils.DAOException;
 
 @WebServlet("/registreer")
@@ -29,22 +30,21 @@ public class SVTRegistreerGebruiker extends HttpServlet {
 		final String VIEW = "/WEB-INF/JSP/nieuweGebruiker.jsp", REDIRECT ="/registreer"; 
 		DAOUsers userDAO = null;
 		err_msgs = new ArrayList<String>();
-		String voornaam = request.getParameter("voornaam"),
-				familienaam = request.getParameter("familienaam"),
-				straat = request.getParameter("straat"),
-				huisnr = request.getParameter("huisnr"),
-				postcode = request.getParameter("postcode"),
-				gemeente = request.getParameter("gemeente"),
-				gebruikersnaam = request.getParameter("username"),
-				wachtwoord = request.getParameter("pass"),
-				confirmpass = request.getParameter("confirmpass");
-		System.out.println(voornaam);
+		Persoon persoon = new Persoon(request.getParameter("voornaam"),
+				request.getParameter("familienaam"),
+				request.getParameter("straat"),
+				request.getParameter("huisnr"),
+				request.getParameter("postcode"),
+				request.getParameter("gemeente"),
+				request.getParameter("username"),
+				request.getParameter("pass");
+				String confirmpass = request.getParameter("confirmpass");
 
-		if(voornaam.length() == 0 || familienaam ==null || straat.length() == 0 || huisnr.length() == 0 || postcode.length() == 0 || gemeente.length() == 0 || gebruikersnaam.length() == 0 || wachtwoord.length() == 0 || confirmpass.length() == 0){
-			if(voornaam.length() == 0){err_msgs.add("Voornaam niet ingevuld!");}
-			if(familienaam.length() == 0){err_msgs.add("Familienaam niet ingevuld!");}
-			if(straat.length() == 0){err_msgs.add("Straat niet ingevuld!");}
-			if(huisnr.length() == 0){err_msgs.add("Huisnummer niet ingevuld!");}
+		if(persoon.getVoornaam().length() == 0 || familienaam ==null || straat.length() == 0 || huisnr.length() == 0 || postcode.length() == 0 || gemeente.length() == 0 || gebruikersnaam.length() == 0 || wachtwoord.length() == 0 || confirmpass.length() == 0){
+			if(persoon.getVoornaam().length() == 0){err_msgs.add("Voornaam niet ingevuld!");}
+			if(persoon.getFamilienaam().length() == 0){err_msgs.add("Familienaam niet ingevuld!");}
+			if(persoon.getStraat().length() == 0){err_msgs.add("Straat niet ingevuld!");}
+			if(persoon.getHuisnr().length() == 0){err_msgs.add("Huisnummer niet ingevuld!");}
 			if(postcode.length() == 0){err_msgs.add("Postcode niet ingevuld!");}
 			if(gemeente.length() == 0){err_msgs.add("Gemeente niet ingevuld!");}
 			if(gebruikersnaam.length() == 0){err_msgs.add("Gebruikersnaam niet ingevuld!");}
