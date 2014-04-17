@@ -25,7 +25,7 @@
 					<legend>Naam</legend>
 					<div class="align_bottom">
 						<div class="label_n_input">
-							<label>Naam:</label> <input type="text" value="${familienaam}" name="familienaam" />
+							<label>Naam:</label> <input type="text" value="${userdata.familienaam}" name="familienaam" />
 						</div>
 						<div class="label_n_input">
 							<label>Voornaam:</label> <input type="text" value="${userdata.voornaam}" name="voornaam"/>
@@ -54,7 +54,7 @@
 					<div class="align_bottom">
 						<div class="label_n_input">
 						<core:if test="${persoon.gebruikersnaam.length != 0}">
-						<core:set var="user" scope="request" value="${persoon.gebruikersnaam}"/>
+						<core:set var="user" scope="request" value="${userdata.gebruikersnaam}"/>
 						</core:if>
 							<label>Gebruikersnaam:</label> <input type="text" value="${user}"
 								name="username" />
