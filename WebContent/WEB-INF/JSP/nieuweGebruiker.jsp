@@ -28,7 +28,7 @@
 							<label>Naam:</label> <input type="text" value="${familienaam}" name="familienaam" />
 						</div>
 						<div class="label_n_input">
-							<label>Voornaam:</label> <input type="text" value="${voornaam}" name="voornaam"/>
+							<label>Voornaam:</label> <input type="text" value="${userdata.voornaam}" name="voornaam"/>
 						</div>
 					</div>
 				</fieldset>
@@ -36,16 +36,16 @@
 					<legend>Adres</legend>
 					<div class="align_bottom">
 						<div class="label_n_input">
-							<label>Straat:</label><input type="text" value="${straat}" name="straat"/>
+							<label>Straat:</label><input type="text" value="${userdata.straat}" name="straat"/>
 						</div>
 						<div class="label_n_input">
-							<label>Nr:</label> <input type="text" value="${huisnr}" name="huisnr"/>
+							<label>Nr:</label> <input type="text" value="${userdata.huisnr}" name="huisnr"/>
 						</div>
 						<div class="label_n_input">
-							<label>Postcode:</label> <input type="text" value="${postcode}" name="postcode"/>
+							<label>Postcode:</label> <input type="text" value="${userdata.postcode}" name="postcode"/>
 						</div>
 						<div class="label_n_input">
-							<label>Gemeente:</label> <input type="text" value="${gemeente}" name="gemeente"/>
+							<label>Gemeente:</label> <input type="text" value="${userdata.gemeente}" name="gemeente"/>
 						</div>
 					</div>
 				</fieldset>
@@ -53,6 +53,9 @@
 					<legend>Gebruiker gegevens</legend>
 					<div class="align_bottom">
 						<div class="label_n_input">
+						<core:if test="${persoon.gebruikersnaam.length != 0}">
+						<core:set var="user" scope="request" value="${persoon.gebruikersnaam}"/>
+						</core:if>
 							<label>Gebruikersnaam:</label> <input type="text" value="${user}"
 								name="username" />
 						</div>
