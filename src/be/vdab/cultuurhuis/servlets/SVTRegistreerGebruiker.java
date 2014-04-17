@@ -25,9 +25,11 @@ public class SVTRegistreerGebruiker extends HttpServlet {
 
 	}
 
+
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Rubber Duckie");
-		final String VIEW = "/WEB-INF/JSP/nieuweGebruiker.jsp", REDIRECT ="/registreer"; 
+		final String VIEW = "/WEB-INF/JSP/nieuweGebruiker.jsp", REDIRECT ="/bevestigen"; 
 		DAOUsers userDAO = null;
 		err_msgs = new ArrayList<String>();
 		Persoon persoon = new Persoon(
@@ -38,8 +40,8 @@ public class SVTRegistreerGebruiker extends HttpServlet {
 				request.getParameter("postcode"),
 				request.getParameter("gemeente"),
 				request.getParameter("username"));
-				
-				String wachtwoord = request.getParameter("pass"), confirmpass = request.getParameter("confirmpass");
+
+		String wachtwoord = request.getParameter("pass"), confirmpass = request.getParameter("confirmpass");
 
 		if(persoon.getVoornaam().length() == 0 || persoon.getFamilienaam().length() == 0 || persoon.getStraat().length() == 0 || persoon.getHuisnr().length() == 0 || persoon.getPostcode().length() == 0 || persoon.getGemeente().length() == 0 || persoon.getGebruikersnaam().length() == 0 || wachtwoord.length() == 0 || confirmpass.length() == 0){
 			if(persoon.getVoornaam().length() == 0){err_msgs.add("Voornaam niet ingevuld!");}
@@ -80,27 +82,27 @@ public class SVTRegistreerGebruiker extends HttpServlet {
 			try {
 				userDAO = new DAOUsers();
 				if(userDAO.addUser(persoon.getVoornaam(), persoon.getFamilienaam(), persoon.getStraat(), persoon.getHuisnr(), persoon.getPostcode(), persoon.getGemeente(), persoon.getGebruikersnaam(), wachtwoord)){
+					Long klantNr = userDAO.getLastAddedId();
 					HttpSession session = request.getSession();
-					session.setAttribute("username", persoon.getGebruikersnaam());
-					
+					session.setAttribute("klantnr", klantNr);
+
 					response.sendRedirect(response.encodeRedirectURL(
 							request.getContextPath() + REDIRECT));
-					
+
 				}else{
 					err_msgs.add("Gebruiker bestaat al!");
-					
+
 					request.setAttribute("userdata", persoon);
-					
+
 					request.setAttribute("errors", err_msgs);
 					RequestDispatcher dispatcher = request.getRequestDispatcher(VIEW);
 					dispatcher.forward(request, response);
-					
+
 				}
 			} catch (DAOException daoExc) {
 
-
 				request.setAttribute("userdata", persoon);
-				
+
 				err_msgs.add(daoExc.getMessage());
 				request.setAttribute("errors", err_msgs);
 				RequestDispatcher dispatcher = request.getRequestDispatcher(VIEW);
