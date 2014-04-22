@@ -82,7 +82,7 @@ public class SVTRegistreerGebruiker extends HttpServlet {
 			try {
 				userDAO = new DAOUsers();
 				if(userDAO.addUser(persoon.getVoornaam(), persoon.getFamilienaam(), persoon.getStraat(), persoon.getHuisnr(), persoon.getPostcode(), persoon.getGemeente(), persoon.getGebruikersnaam(), wachtwoord)){
-					Long klantNr = userDAO.getLastAddedId();
+					Long klantNr = userDAO.getKlantNr(persoon.getGebruikersnaam());
 					HttpSession session = request.getSession();
 					session.setAttribute("klantnr", klantNr);
 

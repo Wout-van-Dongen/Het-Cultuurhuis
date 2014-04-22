@@ -49,7 +49,8 @@
 				</dl>
 			</core:if>
 			<h2>Stap 2:Bevestigen</h2>
-			<form>
+			<core:url var="bevestigURL" value="/reservatie/registratie"/>
+			<form action="${bevestigURL}" method="post">
 				<button type="submit"
 					<core:if test="${klantnr == null}">disabled="true"</core:if>>Bevestig</button>
 			</form>

@@ -61,4 +61,31 @@ public class DAOVoorstellingen extends DataAccesObject{
 		}
 		return voorstellingen;	
 	}
+
+	public int getVrijePlaatsen(long voorstellingsnr) throws DAOException{
+
+		final String QUERY_CHECK = "SELECT vrijeplaatsen FROM voorstellingen WHERE voorstellingsnr = ?;";
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet rs = null;
+		//Checks if there are enough seats available
+		try{
+			connection = getConnection();
+			statement = connection.prepareStatement(QUERY_CHECK);
+			statement.setLong(1, voorstellingsnr);
+			System.out.println(statement);
+			rs = statement.executeQuery();
+
+			if(rs.next()){
+				System.out.println("rs is not empty");
+				return (int)  rs.getLong("vrijeplaatsen");
+			}else{
+				throw new DAOException("De opgevraagde voorstelling kan niet worden teruggevonden.");
+			}
+		}catch(SQLException sqlExc){
+			throw new DAOException("Er is een fout opgetreden bij het zoeken naar de voorstelling", sqlExc);
+		}
+		//
+
+	}
 }

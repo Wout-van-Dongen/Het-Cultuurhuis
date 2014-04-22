@@ -149,6 +149,28 @@ table#winkelmand_inhoud td {
 	border-color: #00B5BF;
 }
 
+/*Overzicht*/
+table#overzicht_inhoud tbody tr:nth-child(odd) td {
+	background-color: #cccccc;
+}
+
+table#overzicht_inhoud tbody tr:nth-child(even) td {
+	background-color: #ffffff;
+}
+
+table#overzicht_inhoud tfoot,table#winkelmand_inhoud thead {
+	background-color: #aaaaaa;
+	color:#ffffff;
+}
+
+table#overzicht_inhoud tfoot td,table#winkelmand_inhoud th{
+	color:#ffffff;
+}
+
+table#overzicht_inhoud td {
+	border-color: #aaaaaa;
+}
+
 /*==Overall Classes===================================*/
 .red {
 	color: #FF0000;

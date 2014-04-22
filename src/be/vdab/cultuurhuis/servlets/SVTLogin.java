@@ -34,15 +34,12 @@ public class SVTLogin extends HttpServlet {
 		//Kijk na of de gebruikersnaam en het paswoord overeen komen
 
 		if(check.equals("lookup")){
-			System.out.println("Entered \"lookup\"\n\tsrc:SVTLogin.java");
 			if(pass.length() == 0 || user.length() == 0){
 				view = "/WEB-INF/JSP/bevestigen.jsp";
 				if(user.length() == 0){
-					System.out.println("Checks user length.\n\tsrc:SVTLogin.java");
 					err_msgs.add("Gelieve een gebruikersnaam in te vullen.");
 				}
 				if(pass.length() == 0){
-					System.out.println("Checks pass length.\n\tsrc:SVTLogin.java");
 					err_msgs.add("Gelieve een wachtwoord in te vullen.");
 				}
 			}else if(pass.length()<8 || user.length()<4){
@@ -59,7 +56,8 @@ public class SVTLogin extends HttpServlet {
 				DAOUsers userDAO = new DAOUsers();
 				try{
 					if(userDAO.login(user, pass)){
-						session.setAttribute("klantnr", user);
+						userDAO.getKlantNr(user);
+						session.setAttribute("klantnr", userDAO.getKlantNr(user));
 					}else{
 						err_msgs.add("Onjuist wachtwoord en/of gebruikersnaam.");
 					}

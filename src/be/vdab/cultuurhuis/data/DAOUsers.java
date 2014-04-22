@@ -34,8 +34,8 @@ public class DAOUsers extends DataAccesObject{
 		}
 	}
 
-	public synchronized long getLastAddedId() throws DAOException{
-		String QUERY ="SELECT last_insert_id();";
+	public synchronized long getKlantNr(String username) throws DAOException{
+		String QUERY ="SELECT klantnr FROM klanten WHERE gebruikersnaam = ?;";
 		ResultSet rs = null;
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -43,6 +43,7 @@ public class DAOUsers extends DataAccesObject{
 		try {
 			connection = getConnection();
 			statement = connection.prepareStatement(QUERY);
+			statement.setString(1, username);
 			rs = statement.executeQuery();
 			if(rs.next()){
 				return rs.getLong(1);
